@@ -1,0 +1,188 @@
+.list_container{
+    display: flex;
+    justify-content: right;
+    gap: 6rem;
+    list-style: none;
+    padding: 0.3rem 1rem 0 0;
+
+}
+.rotateddiv{
+    display: none;
+    background-color: white;
+    transform: rotate(45deg);
+}
+.languages:hover .rotateddiv{
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0px auto -10px auto;
+}
+.lang_list{
+    display: none;
+    text-align: center;
+    margin-top: 0px;
+    border-radius: 7px;
+    
+}
+.lang_list li{
+    list-style: none;
+    padding-right: 3rem;
+}
+.languages:hover{
+    cursor: pointer;
+}
+.languages:hover .lang_list{
+    cursor: pointer;
+    position:absolute;
+    overflow: hidden;
+    display: block;
+    justify-content: center;
+    background-color: white;
+    color: black;
+} 
+.searching{
+    display: flex;
+    width: 95%;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.3rem;
+}
+.searchbar{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    padding: 3px 12px;
+    border-radius: 5px;
+    color: rgb(63, 62, 62);
+}
+.searchbar input{
+    width: 350px;
+    border: none;
+    outline: none;
+    height: 99%;
+    font-size: 18px;
+}
+.searchbar .span{
+    color: blue;
+    font-size: 20px;
+}
+.searchbar span:hover{
+    cursor: pointer;
+}
+.country{
+    display: block;
+    font-size: 20px;
+}
+.user{
+    font-size: 23px;
+    
+}
+.user .user_list{
+    display: none;
+}
+.user:hover .user_list{
+    position:absolute;
+    border-radius: 5px;
+    margin-left: -50px;
+    text-align: center;
+    width: 240px;
+    display: block;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.cart{
+    font-size: 28px;
+
+}
+.responsivenav{
+    display: none;
+}
+.menu_list{
+    display: flex;
+    margin-top: 2rem;
+    gap: 20px;
+    justify-content: left;
+}
+
+.menu_list .cat_list{
+    display: none;
+}
+.menu_list .li:hover .cat_list{
+    display: block;
+    position:absolute;
+    color: black;
+}
+.menu_list .li:hover body{
+    opacity: 0.3;
+    z-index: 10;
+}
+.menu_list:hover .cat_list li{
+    list-style: none;
+}
+
+.country .country_list{
+    display: none;
+}
+
+.country:hover .country_list{
+    background-color: white;
+    padding: 0px 10px;
+    color: black;
+    width: 220px;
+    border-radius: 8px;
+    position:absolute;
+    margin-left: -90px;
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.li{
+    list-style: none;
+    font-weight:500;
+    color: white;
+    text-decoration: none;
+}
+@media screen and (max-width: 425px) {
+    .list_container{
+        display: none;
+    }
+    hr{
+        display: none;
+    }
+    .responsivenav{
+        padding-top: 1rem;
+        display: block;
+    }
+    .res_menu{
+        display: flex;
+        justify-content: space-around;
+        font-size: 2rem;
+    }
+    .res_search{
+        margin-top: 1.3rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    .res_search input{
+        width: 70%;
+        height: 5vh;
+        border-radius: 1rem;
+    }
+    .menu_list{
+        display: none;
+    }
+    .searching{
+       display: none;
+    }
+   
+  
+
+    
+}
