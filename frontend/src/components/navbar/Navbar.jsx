@@ -426,7 +426,7 @@ const Navbar = () => {
 };
 
 const NavPageWraper = styled.div`
-  max-width: 1100px;
+  width: 100%;
   margin: auto;
   height: auto;
   padding-bottom: 1px;
