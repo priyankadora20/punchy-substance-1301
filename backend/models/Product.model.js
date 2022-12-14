@@ -1,24 +1,25 @@
 const mongoose = require("mongoose");
 
-const gadgetsSchema = mongoose.Schema({
-  image1: {
+const productSchema = mongoose.Schema({
+  image: {
     type: String,
   },
   images: [],
-  name: {
+  title: {
     type: String,
   },
   price: {
     type: Number,
   },
-  about: {
+  brand: {
     type: String,
   },
   category: {
     type: String,
     enum: ["electronics", "vehicle", "geeks"],
   },
+  onSale: Boolean,
 });
-const GadgetsModel = mongoose.model("gadgets", gadgetsSchema);
+const ProductModel = mongoose.model("product", productSchema);
 
-module.exports = { GadgetsModel };
+module.exports = { ProductModel };
