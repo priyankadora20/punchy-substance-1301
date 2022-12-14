@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import styles from "../styles/navbar.module.css";
-import { BsChevronDown, BsCart3, BsChevronUp } from "react-icons/bs";
+import { BsChevronDown, BsCart3 } from "react-icons/bs";
 import { CiMobile2 } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
-
+import SearchPage from "../searchPage/SearchInput";
+import { useSelector } from "react-redux";
 const Navbar = () => {
-  const [search, serSearch] = useState("");
+  const [query, setQuery] = useState("");
+  // const data=useSelector((store)=>store.suggestionReducer.suggestion)
+  const data=[]
+  const [suggestion,setSuggestion]=useState([])
+
+
+  const queryHandler=useCallback((val)=>{
+    setQuery(val)
+  },[])
+
+  useEffect(()=>{
+    if(data.length===0){
+      // getData API
+    }
+    else{
+      if(query===""){
+        setSuggestion([])
+      }else{
+  
+      }
+    }
+  },[data.length,query])
   return (
     <>
       <NavPageWraper>
@@ -60,15 +82,8 @@ const Navbar = () => {
             src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
             alt="logo"
           />
-          <div className={styles.searchbar}>
-            <div>
-              All category <span>{"|"}</span>
-            </div>
-            <input type="text" />
-            <span className={styles.span}>
-              <FiSearch />
-            </span>
-          </div>
+
+          <SearchPage setQuery={queryHandler}/>
           <div className={styles.country}>
             <span>Country</span>
             <div className={styles.country_list}>
@@ -203,8 +218,12 @@ const Navbar = () => {
                     }}
                   />
                 </div>
-                <img  height="25" style={{padding:"27px"}} src={process.env.PUBLIC_URL+"/google-auth.png"} alt="google" />
-
+                <img
+                  height="25"
+                  style={{ padding: "27px" }}
+                  src={process.env.PUBLIC_URL + "/google-auth.png"}
+                  alt="google"
+                />
               </div>
             </div>
           </div>
@@ -213,31 +232,40 @@ const Navbar = () => {
               <span>
                 <BsCart3 />
               </span>
+              <sup
+                style={{
+                  backgroundColor: "red",
+                  color: "white",
+                  borderRadius: "50%",
+                  fontSize: "16px",
+                  padding: "3px",
+                }}
+              >
+                {"5"}
+              </sup>
             </div>
           </div>
         </div>
-        <ul className={styles.menu_list}>
+        <input type="checkbox" id="nav_check" hidden />
+        <ul className={styles.menu_list} id="menulist">
           <Link to={"#"} className={styles.li}>
-            <span>
+            <span className={styles.cat_ham}>
               <RxHamburgerMenu />
             </span>{" "}
             <span>Category</span>
             <ul className={styles.cat_list}>
               <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
-              <li>Local warehouses</li>
+              <li>Sports & Outdoors</li>
+              <li>Smart Home & Gardens</li>
+              <li>Customer & Electronics</li>
+              <li>Generators & Portable Power</li>
+              <li>Computers, Tablets & Accessories</li>
+              <li>TV Boxes & Mini PC's</li>
+              <li>Toys & Hobies</li>
+              <li>Phone & Accessories</li>
+              <li>Automobiles & Motorcycles</li>
+              <li>Security Systems</li>
+              <li>Wearable Devices</li>
             </ul>
           </Link>
           <Link to={"#"} className={styles.li}>
@@ -266,13 +294,129 @@ const Navbar = () => {
 
         <div className={styles.responsivenav}>
           <div className={styles.res_menu}>
-            <RxHamburgerMenu />
-            <span>logo</span>
-            <AiOutlineUser />
-            <BsCart3 />
+            <span>
+              <label for="nav_check" id="hamburger">
+              <RxHamburgerMenu />
+              </label>
+
+              {/* <input type="checkbox" id="nav_check" hidden /> */}
+              {/* <div className={styles.hamburger_list}>
+          <Link to={"#"} className={styles.li}>
+            <span>
+              <RxHamburgerMenu />
+            </span>{" "}
+            <span>Category</span>
+            <ul className={styles.cat_list}>
+              <li>Local warehouses</li>
+              <li>Sports & Outdoors</li>
+              <li>Smart Home & Gardens</li>
+              <li>Customer & Electronics</li>
+              <li>Generators & Portable Power</li>
+              <li>Computers, Tablets & Accessories</li>
+              <li>TV Boxes & Mini PC's</li>
+              <li>Toys & Hobies</li>
+              <li>Phone & Accessories</li>
+              <li>Automobiles & Motorcycles</li>
+              <li>Security Systems</li>
+              <li>Wearable Devices</li>
+            </ul>
+          </Link>
+          <Link to={"#"} className={styles.li}>
+            New
+          </Link>
+          <Link to={"#"} className={styles.li}>
+            Bestselling
+          </Link>
+
+          <Link to={"#"} className={styles.li}>
+            Brand
+          </Link>
+          <Link to={"#"} className={styles.li}>
+            Clearance
+          </Link>
+          <Link to={"#"} className={styles.li}>
+            Deals
+          </Link>
+          <Link to={"#"} className={styles.li}>
+            Coupons
+          </Link>
+          <Link to={"#"} className={styles.li}>
+            App only
+          </Link>
+        
+              </div> */}
+            </span>
+            <img
+              height="30"
+              src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
+              alt="logo"
+            />
+            <span className={styles.res_user}>
+              <AiOutlineUser />
+
+              <div className={styles.res_user_list}>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "5px",
+                    width: "95%",
+                    justifyContent: "center",
+                    height: "7vh",
+                    paddingTop: "10px",
+                    margin: "auto",
+                  }}
+                >
+                  <button
+                    style={{
+                      backgroundColor: "#2c8afb",
+                      border: "none",
+                      color: "white",
+                      width: "46%",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    Login
+                  </button>
+                  <button
+                    style={{
+                      backgroundColor: "#9ed2fa",
+                      border: "1px solid #2c8afb",
+                      color: "#2c8afb",
+                      width: "46%",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    Sign In
+                  </button>
+                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "95%",
+                    }}
+                  >
+                    <hr style={{ width: "45%", color: "gray" }} />
+                    <span>{"or"}</span>
+                    <hr style={{ width: "45%", backgroundColor: "gray" }} />
+                  </div>
+                    <span style={{ display: "flex", justifyContent: "center" }}>
+                  <img
+                    height="25"
+                    style={{ padding: "27px" }}
+                    src={process.env.PUBLIC_URL + "/google-auth.png"}
+                    alt="google"
+                  />
+                </span>
+              </div>
+            </span>{" "}
+            <span>
+              <BsCart3 />
+            </span>
           </div>
           <div className={styles.res_search}>
-            <FiSearch />
+            <FiSearch color="#2c8afb" fontSize="24px" />
             <input type="text" placeholder="Search..." />
           </div>
         </div>
@@ -282,8 +426,10 @@ const Navbar = () => {
 };
 
 const NavPageWraper = styled.div`
-  width: 100%;
-  height: 25vh;
+  max-width: 1100px;
+  margin: auto;
+  height: auto;
+  padding-bottom: 1px;
   background-color: #2c8afb;
   color: white;
 
