@@ -5,8 +5,6 @@ const { gadgetsRouter } = require("./routes/gadgets.routes");
 const cors = require("cors");
 const { signupRouter } = require("./routes/signup.routes");
 const { loginRouter } = require("./routes/login.routes");
-const { signupvalidate } = require("./middlewares/signupvalidate");
-const { loginvalidate } = require("./middlewares/loginvalidate");
 const { productRouter } = require("./routes/product.routes");
 
 app.use(express.json());

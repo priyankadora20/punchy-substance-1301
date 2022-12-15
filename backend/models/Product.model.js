@@ -11,12 +11,27 @@ const productSchema = mongoose.Schema({
   price: {
     type: Number,
   },
+  listPrice: {
+    type: Number,
+  },
   brand: {
     type: String,
   },
   category: {
     type: String,
-    enum: ["electronics", "vehicle", "geeks"],
+    enum: [
+      "electronics",
+      "headphones",
+      "speakers",
+      "3d printer",
+      "powerbank",
+      "e-bikes",
+      "gaming",
+      "sports",
+      "watches",
+      "computer",
+      "laptop",
+    ],
   },
   onSale: Boolean,
 });
