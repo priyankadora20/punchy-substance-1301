@@ -7,7 +7,7 @@ import {RiCustomerService2Fill} from "react-icons/ri"
 const Footer = () => {
   return (
     <FooterPageWraper>
-      <p style={{textAlign:"center",fontWeight:"bold",color:"#2c8afb"}}>Why buy from Geekbuyin?</p>
+      <p style={{textAlign:"center",fontWeight:"bold",color:"#2c8afb",fontSize:"19px",padding:"10px"}}>Why buy from Geekbuyin?</p>
       <hr />
       <div className={styles.search_parent}>
 
@@ -53,15 +53,15 @@ const Footer = () => {
                 <img src={process.env.PUBLIC_URL+"/geekbuying_apps.PNG"} alt="apps" />
             </div>
             <div className={styles.email}>
-              <div>
+              <div style={{display:"flex",alignItems:"center"}}>
                 <MdEmail color="#2c8afb"/>
                 <span style={{paddingLeft:"10px"}}>service@geekbuying.com</span>
               </div>
-              <div>
+              <div style={{display:"flex",alignItems:"center"}}>
                 <HiTicket color="#2c8afb"/>
                 <span style={{paddingLeft:"10px"}}>Ticket</span>
               </div>
-              <div>
+              <div style={{display:"flex",alignItems:"center"}}>
                 <RiCustomerService2Fill color="#2c8afb"/>
                 <span style={{paddingLeft:"10px"}}>service@geekbuying.com</span>
               </div>
@@ -69,7 +69,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div style={{maxWidth:"1100px",paddingLeft:"20px"}}>
+      <div id={styles.populer} style={{width:"100%",paddingLeft:"20px"}}>
         
         <p style={{fontWeight:"bold"}}>Populer Searches</p>
         <div className={styles.populer_search}>
@@ -90,10 +90,14 @@ const Footer = () => {
   );
 };
 const FooterPageWraper = styled.div`
-  max-width: 1100px;
+  width: 100%;
   background-color: #f1f6fd;
   margin: auto;
-  height: auto;
   padding-bottom:5px;
+
+
+  @media (max-width: 425px) {
+    display:none;
+  }
 `;
 export default Footer;

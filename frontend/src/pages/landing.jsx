@@ -10,6 +10,7 @@ import { Floatingmenu } from "../components/floatingmenu";
 import { Bestseller } from "../components/bestseller";
 import { Popularbrands } from "../components/popularbrands";
 import { Particle } from "../components/particle";
+import Footer from "../components/footer/Footer";
 
 const car_data=[
     {
@@ -60,7 +61,7 @@ export const Landing=()=>{
             setFirst(getMultipleRandom(topran, 4)); 
             setSecond(getMultipleRandom(topran, 4));   
       },[topran])
-    return(
+    return[
         <Box id="top">
             <Particle/>
         <Box w='80%' m='auto' h='500px'  boxSizing="border-box" mt='100px'>
@@ -121,7 +122,10 @@ export const Landing=()=>{
             <Popularbrands/>
             <Popularbrands/>
             <Floatingmenu/>
+            <Footer/>
         </Box>
         </Box>
-    )
+        
+
+    ]
 }
