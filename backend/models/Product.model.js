@@ -11,6 +11,9 @@ const productSchema = mongoose.Schema({
   price: {
     type: Number,
   },
+  strikedPrice: {
+    type: Number,
+  },
   brand: {
     type: String,
   },
