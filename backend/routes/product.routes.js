@@ -7,5 +7,9 @@ productRouter.get("/", async (req, res) => {
   const products = await ProductModel.find();
   res.send(products);
 });
-
+productRouter.post("/add", async (req, res) => {
+  let data = req.body;
+  await ProductModel.insertMany(data);
+  res.send("added");
+});
 module.exports = { productRouter };

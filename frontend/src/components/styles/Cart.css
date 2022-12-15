@@ -1,0 +1,254 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  #blue-banner {
+    height: 100px;
+    background-image: linear-gradient(to bottom, #318ffb, #06f);
+    padding-left: 10%;
+    padding-top: 1.7%;
+  }
+  
+  #logo {
+    height: 60px;
+    
+  }
+  
+  #logosecure {
+    /* border: 1px solid; */
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #secure {
+    height: 20px;
+  }
+  
+  #product-display {
+    /* border: 1px solid; */
+    width: 80%;
+    margin: auto;
+    margin-top: 3%;
+  }
+  
+  #product-display h4{
+    font-size: 16px;
+  }
+  
+  #product-tab {
+    /* border: 1px solid; */
+    padding-top: 10px;
+    display: flex;
+    color: gray;
+    align-items: center;
+  }
+  
+  #product-tab > div {
+    height: 45px;
+    background-color: rgba(192, 192, 192, 0.304);
+    color: gray;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+  }
+  
+  #product-tab > div:nth-child(1) {
+    width: 70%;
+  }
+  
+  #product-tab > div:nth-child(2) {
+    width: 20%;
+  }
+  #product-tab > div:nth-child(3) {
+    width: 17%;
+  }
+  #product-tab > div:nth-child(4) {
+    width: 10%;
+  }
+  
+  #product-tab > div:nth-child(5) {
+    width: 13%;
+  }
+  
+  .cart_summary {
+    width: 100%;
+    /* border: 1px solid; */
+    border-radius: 5px;
+    height: 310px;
+    padding: 20px 20px 20px 20px;
+    overflow: scroll;
+  }
+  
+  .cartitem {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* margin-bottom: 20px; */
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /* border: 1px solid blue; */
+  }
+  
+  .cartitem > div:nth-child(2) {
+    width: 34%;
+  }
+  
+  .cartitem > div:nth-child(2) p {
+    font-size: 16px;
+  }
+  
+  .cartitem > div:nth-child(3) {
+    width: 8%;
+  }
+  
+  .cartitem > div:nth-child(4) {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cartitem > div:nth-child(3) p {
+    font-size: 16px;
+  }
+  .cartitem > div:nth-child(5) p {
+    font-size: 16px;
+  }
+  
+  .cartitem > div {
+    /* border: 1px solid; */
+    padding: 10px;
+    display: block;
+    /* margin: auto; */
+  }
+  
+  .cartitem img {
+    height: 100px;
+  }
+  
+  .cartitem p {
+    font-size: 12px;
+    text-align: left;
+  }
+  
+  .cartitem button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 30px;
+  }
+  .cartitem button:nth-child(2) {
+    width: 50%;
+  }
+  
+  #cont-shop {
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: left;
+  }
+  
+  #cont-shop > div:nth-child(1) {
+    grid-area: 1/1/2/2;
+  }
+  
+  #cont-shop > div:nth-child(2) {
+    grid-area: 1/3/2/4;
+  }
+  
+  #cont-shop > div:nth-child(3) {
+    grid-area: 1/4/2/4;
+  }
+  
+  #cont-shop > div:nth-child(4) {
+    grid-area: 1/5/2/8;
+  }
+  
+  
+  #button-div {
+    display: flex;
+    gap: 10px;
+  }
+  
+  #payment-buttons {
+    padding: 7px 20%;
+    background-color: rgb(228, 200, 16);
+    border: 1px solid white;
+  }
+  
+  #paypal {
+    height: 18px;
+  }
+  
+  #checkout-button {
+    padding: 7px 20%;
+    background-color: #06f;border: 1px solid white;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 15px; */
+    color: white;
+  }
+  
+  #easy-pay {
+    border: 2px solid orangered;
+    border-radius: 10px;
+    font-size: 14px;
+    /* width: 40%; */
+    font-weight: 600;
+    text-align: center;
+    color: orangered;
+  }
+  
+  #caro-div {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  #caro-prod-img > img {
+    height: 150px;
+    margin: auto;
+    margin-bottom: 10px;
+    /* border: 1px solid blue; */
+  }
+  
+  #caro-prod-title {
+    /* border: 1px solid; */
+    height: 40px;
+    overflow: hidden;
+  }
+  
+  #caro-prod-title p:nth-child(1) {
+    font-size: 13px;
+    text-align: start;
+    font-family: monospace;
+    font-weight: 500;
+  }
+  
+  #caro-prod-price {
+    font-size: 17px;
+    font-weight: 700;
+    color: orangered;
+  }
+  
+  #relevant_head {
+    font-size: 22px;
+  }
+  
+  .carousel-wrapper {
+    border-top: 1px solid rgba(192, 192, 192, 0.356);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+  
+  #payment-partners {
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+  }
