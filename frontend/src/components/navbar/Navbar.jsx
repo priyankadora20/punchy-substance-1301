@@ -8,30 +8,65 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import SearchPage from "../searchPage/SearchInput";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getData } from "../../redux/suggestionReducer/action";
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
+import { icons } from "react-icons";
+import axios from "axios";
 const Navbar = () => {
   const [query, setQuery] = useState("");
-  // const data=useSelector((store)=>store.suggestionReducer.suggestion)
-  const data=[]
-  const [suggestion,setSuggestion]=useState([])
+  const [suggvalue, setSuggvalue] = useState("");
+  const [searchQueryVal,setSearchQueryVal]=useState("")
+  const data = useSelector((store) => store.suggestionReducer.suggestion);
+  const [suggestion, setSuggestion] = useState([]);
+  console.log("suggvalue", suggvalue);
+  const dispatch = useDispatch();
 
+  const queryHandler = useCallback((val) => {
+    setQuery(val);
+  }, []);
 
-  const queryHandler=useCallback((val)=>{
-    setQuery(val)
-  },[])
-
-  useEffect(()=>{
-    if(data.length===0){
-      // getData API
+ useEffect(()=>{
+  // if(searchQueryVal){
+  //   axios.get(`https://fakestoreapi.com/products/category/${searchQueryVal}`).the((r)=>{
+  //       console.log("search",r)
+  //   }).catch((e)=>{
+  //     console.log(e)
+  //   })
+  // }
+ },[searchQueryVal])
+  useEffect(() => {
+    if (data.length === 0) {
+      dispatch(getData());
     }
-    else{
-      if(query===""){
-        setSuggestion([])
-      }else{
-  
-      }
+  }, [data.length, dispatch]);
+  useEffect(() => {
+    if (query === "") {
+      setSuggestion([]);
+    } else {
+      let querywithouspace = query.trim().toLocaleLowerCase();
+      let newsuggetion = data
+        .filter((ele) => {
+          return ele.category.toLowerCase().indexOf(querywithouspace) !== -1
+            ? true
+            : false;
+        })
+        .map((e) => {
+          return e.category;
+        });
+      setSuggestion(newsuggetion);
     }
-  },[data.length,query])
+  }, [query, data, suggvalue]);
   return (
     <>
       <NavPageWraper>
@@ -46,30 +81,32 @@ const Navbar = () => {
             </span>
           </li>
           <div className={styles.languages}>
-            <span className={styles.lang_text}> Languages</span>
-            <span>
+            <span
+              style={{ display: "flex", gap: "10px", alignItems: "center" }}
+            >
+              <span className={styles.lang_text}> Languages</span>
               <BsChevronDown />
             </span>
             {/* <div className={styles.rotateddiv}></div> */}
             <ul className={styles.lang_list}>
               <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
-              <li>English</li>
+              <li>Etaliano</li>
+              <li>Γλώσσα</li>
+              <li>Deutsch</li>
+              <li>Espanol</li>
+              <li>Francais</li>
+              <li>Portugues</li>
+              <li>Slovencina</li>
+              <li>Magyar</li>
+              <li>Limba romana</li>
+              <li>Cestina</li>
+              <li>Japanese</li>
+              <li>שפה</li>
+              <li>Jezik</li>
             </ul>
           </div>
-          <li>
-            Support System{" "}
+          <li style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            <span>Support System</span>
             <span>
               <BsChevronDown />
             </span>
@@ -77,15 +114,30 @@ const Navbar = () => {
         </div>
         <hr />
         <div className={styles.searching}>
-          <img
-            height="34"
-            src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
-            alt="logo"
-          />
+          <div>
+            <img
+              width="100"
+              src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
+              alt="gedgetsstop"
+            />
+          </div>
 
-          <SearchPage setQuery={queryHandler}/>
+          <span>
+            <SearchPage setQuery={queryHandler} suggvalue={suggvalue} />
+            <SuggestionBox limit={5}>
+              {suggestion?.map((e, i) => (
+                <div key={i} onClick={() => setSuggvalue(e)}>
+                  {/* <Link to={`${i}`}>{e}</Link> */}
+
+                  {/* this is for test above is when want redirect */}
+                  <div onClick={()=>setSearchQueryVal(e)}>{e}</div>
+                </div>
+              ))}
+            </SuggestionBox>
+          </span>
+
           <div className={styles.country}>
-            <span>Country</span>
+            <span className={styles.country_text}>Country</span>
             <div className={styles.country_list}>
               <p>Sip to</p>
               <div
@@ -153,95 +205,96 @@ const Navbar = () => {
             </div>
           </div>
           <div className={styles.user}>
-            <div>
-              <span>
-                <AiOutlineUser />
-              </span>
+            {/* <div> */}
+            <span style={{ display: "flex" }}>
+              <AiOutlineUser />
               <span className={styles.userName}>User</span>{" "}
-              <div className={styles.user_list}>
-                <span style={{ fontSize: "18px" }}>Welcome to Gadgetstop</span>
-                <div
+            </span>
+            <div className={styles.user_list}>
+              <span style={{ fontSize: "18px" }}>Welcome to Gadgetstop</span>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  paddingTop: "15px",
+                  gap: "10px",
+                }}
+              >
+                <button
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    paddingTop: "15px",
-                    gap: "10px",
+                    backgroundColor: "#2c8afb",
+                    color: "white",
+                    border: "1px solid #2c8afb",
+                    width: "40%",
+                    borderRadius: "5px",
+                    fontSize: "22px",
                   }}
                 >
-                  <button
-                    style={{
-                      backgroundColor: "#2c8afb",
-                      color: "white",
-                      border: "1px solid #2c8afb",
-                      width: "40%",
-                      borderRadius: "5px",
-                      fontSize: "22px",
-                    }}
-                  >
-                    Join
-                  </button>
-                  <button
-                    style={{
-                      backgroundColor: "#9ed2fa",
-                      color: "#2c8afb",
-                      border: "1px solid #2c8afb",
-                      width: "40%",
-                      borderRadius: "5px",
-                      fontSize: "22px",
-                    }}
-                  >
-                    Sign In
-                  </button>
-                </div>
-                <div
+                  Join
+                </button>
+                <button
                   style={{
-                    width: "90%",
-                    display: "flex",
-                    justifyContent: "center",
-                    margin: "auto",
-                    alignItems: "center",
+                    backgroundColor: "#9ed2fa",
+                    color: "#2c8afb",
+                    border: "1px solid #2c8afb",
+                    width: "40%",
+                    borderRadius: "5px",
+                    fontSize: "22px",
                   }}
                 >
-                  <hr
-                    style={{
-                      width: "45%",
-                      height: "1px",
-                      backgroundColor: "gray",
-                    }}
-                  />
-                  {"or"}
-                  <hr
-                    style={{
-                      width: "45%",
-                      height: "1px",
-                      backgroundColor: "gray",
-                    }}
-                  />
-                </div>
-                <img
-                  height="25"
-                  style={{ padding: "27px" }}
-                  src={process.env.PUBLIC_URL + "/google-auth.png"}
-                  alt="google"
+                  Sign In
+                </button>
+              </div>
+              <div
+                style={{
+                  width: "90%",
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "auto",
+                  alignItems: "center",
+                }}
+              >
+                <hr
+                  style={{
+                    width: "45%",
+                    height: "1px",
+                    backgroundColor: "gray",
+                  }}
+                />
+                {"or"}
+                <hr
+                  style={{
+                    width: "45%",
+                    height: "1px",
+                    backgroundColor: "gray",
+                  }}
                 />
               </div>
+              <img
+                height="25"
+                style={{ padding: "27px" }}
+                src={process.env.PUBLIC_URL + "/google-auth.png"}
+                alt="google"
+              />
             </div>
+            {/* </div> */}
           </div>
           <div className={styles.cart}>
-            <div>
-              <span>
-                <BsCart3 />
-              </span>
+            <div style={{ display: "flex" }}>
+              {/* <span> */}
+              <BsCart3 />
+              {/* </span> */}
               <sup
                 style={{
                   backgroundColor: "red",
                   color: "white",
                   borderRadius: "50%",
-                  fontSize: "16px",
-                  padding: "3px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                {"5"}
+                5
               </sup>
             </div>
           </div>
@@ -251,8 +304,8 @@ const Navbar = () => {
           <Link to={"#"} className={styles.li}>
             <span className={styles.cat_ham}>
               <RxHamburgerMenu />
+              <span>Category</span>
             </span>{" "}
-            <span>Category</span>
             <ul className={styles.cat_list}>
               <li>Local warehouses</li>
               <li>Sports & Outdoors</li>
@@ -294,60 +347,39 @@ const Navbar = () => {
 
         <div className={styles.responsivenav}>
           <div className={styles.res_menu}>
-            <span>
+            {/* <span>
               <label for="nav_check" id="hamburger">
-              <RxHamburgerMenu />
-              </label>
+                <RxHamburgerMenu />
+              </label>     
+            </span> */}
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<RxHamburgerMenu />}
+                variant="outline"
+              />
 
-              {/* <input type="checkbox" id="nav_check" hidden /> */}
-              {/* <div className={styles.hamburger_list}>
-          <Link to={"#"} className={styles.li}>
-            <span>
-              <RxHamburgerMenu />
-            </span>{" "}
-            <span>Category</span>
-            <ul className={styles.cat_list}>
-              <li>Local warehouses</li>
-              <li>Sports & Outdoors</li>
-              <li>Smart Home & Gardens</li>
-              <li>Customer & Electronics</li>
-              <li>Generators & Portable Power</li>
-              <li>Computers, Tablets & Accessories</li>
-              <li>TV Boxes & Mini PC's</li>
-              <li>Toys & Hobies</li>
-              <li>Phone & Accessories</li>
-              <li>Automobiles & Motorcycles</li>
-              <li>Security Systems</li>
-              <li>Wearable Devices</li>
-            </ul>
-          </Link>
-          <Link to={"#"} className={styles.li}>
-            New
-          </Link>
-          <Link to={"#"} className={styles.li}>
-            Bestselling
-          </Link>
-
-          <Link to={"#"} className={styles.li}>
-            Brand
-          </Link>
-          <Link to={"#"} className={styles.li}>
-            Clearance
-          </Link>
-          <Link to={"#"} className={styles.li}>
-            Deals
-          </Link>
-          <Link to={"#"} className={styles.li}>
-            Coupons
-          </Link>
-          <Link to={"#"} className={styles.li}>
-            App only
-          </Link>
-        
-              </div> */}
-            </span>
+              <MenuList pl={"0px"} color={"black"} fontSize={"20px"}>
+                <MenuItem>New Tab</MenuItem>
+                <MenuItem>New Window</MenuItem>
+                <MenuItem>Open Closed Tab</MenuItem>
+                <MenuItem>Open File...</MenuItem>
+                <MenuItem>New Tab</MenuItem>
+                <MenuItem>New Window</MenuItem>
+                <MenuItem>Open Closed Tab</MenuItem>
+                <MenuItem>Open File...</MenuItem>
+                <MenuItem>New Tab</MenuItem>
+                <MenuItem>New Window</MenuItem>
+                <MenuItem>Open Closed Tab</MenuItem>
+                <Flex >
+                  <Input></Input>
+                  <Button>Subscribe</Button>
+                </Flex>
+              </MenuList>
+            </Menu>
             <img
-              height="30"
+              width="90"
               src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
               alt="logo"
             />
@@ -361,7 +393,7 @@ const Navbar = () => {
                     gap: "5px",
                     width: "95%",
                     justifyContent: "center",
-                    height: "7vh",
+                    height: "auto",
                     paddingTop: "10px",
                     margin: "auto",
                   }}
@@ -370,6 +402,8 @@ const Navbar = () => {
                     style={{
                       backgroundColor: "#2c8afb",
                       border: "none",
+                      fontSize: "18px",
+                      height: "80%",
                       color: "white",
                       width: "46%",
                       borderRadius: "5px",
@@ -381,6 +415,8 @@ const Navbar = () => {
                     style={{
                       backgroundColor: "#9ed2fa",
                       border: "1px solid #2c8afb",
+                      fontSize: "18px",
+                      height: "80%",
                       color: "#2c8afb",
                       width: "46%",
                       borderRadius: "5px",
@@ -389,22 +425,21 @@ const Navbar = () => {
                     Sign In
                   </button>
                 </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      width: "95%",
-                    }}
-                  >
-                    <hr style={{ width: "45%", color: "gray" }} />
-                    <span>{"or"}</span>
-                    <hr style={{ width: "45%", backgroundColor: "gray" }} />
-                  </div>
-                    <span style={{ display: "flex", justifyContent: "center" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "95%",
+                  }}
+                >
+                  <hr style={{ width: "45%", color: "gray" }} />
+                  <span>{"or"}</span>
+                  <hr style={{ width: "45%", backgroundColor: "gray" }} />
+                </div>
+                <span style={{ display: "flex", justifyContent: "center" }}>
                   <img
-                    height="25"
-                    style={{ padding: "27px" }}
+                    width="30px"
                     src={process.env.PUBLIC_URL + "/google-auth.png"}
                     alt="google"
                   />
@@ -415,10 +450,13 @@ const Navbar = () => {
               <BsCart3 />
             </span>
           </div>
-          <div className={styles.res_search}>
-            <FiSearch color="#2c8afb" fontSize="24px" />
-            <input type="text" placeholder="Search..." />
-          </div>
+          <FiSearch color="#2c8afb" fontSize="24px" />
+          <SearchPage setQuery={queryHandler} />
+          <SuggestionBox limit={5}>
+            {suggestion?.map((e, i) => (
+              <div key={i}>{e}</div>
+            ))}
+          </SuggestionBox>
         </div>
       </NavPageWraper>
     </>
@@ -435,6 +473,32 @@ const NavPageWraper = styled.div`
 
   @media screen and (max-width: 420px) {
     overflow: hidden;
+  }
+`;
+
+const SuggestionBox = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: block;
+  flex: 1;
+  width: 500px;
+  position: absolute;
+  line-height: 30px;
+  padding-left: 10px;
+  border-radius: 5px;
+  max-height: ${({ limit }) => `${limit * 30}px`};
+  background-color: white;
+  overflow: auto;
+  margin: auto;
+  color: black;
+
+  @media (max-width: 425px) {
+    width: 60%;
+    & * {
+      margin: 5px;
+    }
+    &:hover div {
+      background-color: gray;
+    }
   }
 `;
 export default Navbar;

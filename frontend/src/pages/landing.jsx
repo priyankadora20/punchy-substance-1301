@@ -10,7 +10,6 @@ import { Floatingmenu } from "../components/floatingmenu";
 import { Bestseller } from "../components/bestseller";
 import { Popularbrands } from "../components/popularbrands";
 import { Particle } from "../components/particle";
-import Footer from "../components/footer/Footer"
 
 const car_data = [
     {
@@ -50,6 +49,7 @@ export const Landing = () => {
         const shuffled = [...topran].sort(() => 0.5 - Math.random());
 
         return shuffled.slice(0, num);
+
     }
 
     React.useEffect(() => {
@@ -123,6 +123,9 @@ export const Landing = () => {
                 <Popularbrands />
                 <Popularbrands />
                 <Floatingmenu />
-        </Box>
-    )
+            </Box>
+            
+        
+
+    ]
 }
