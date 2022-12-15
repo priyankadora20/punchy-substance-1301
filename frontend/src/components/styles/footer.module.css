@@ -4,19 +4,20 @@
     background-color: white;
     justify-content: center;
     align-items: center;
-    height: 4.7vh;
+    height: 7vh;
     margin: 2rem auto;
     padding: 5px;
     background-color: #2c8afb;
     border-radius: 5px;
     flex: 1;
+    gap: 10px;
     
 }
 .search_parent input{
     height: 100%;
     width: 92%;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 16px;
     border: 2px solid white;
     outline: none;
 
@@ -29,7 +30,7 @@
 
 }
 .information{
-    max-width: 1100px;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,6 +40,8 @@
 .info_first{
     display: flex;
     width: 49%;
+    justify-content: space-between;
+    
 }
 .info_first p{
     font-weight: bold;
@@ -51,7 +54,7 @@
     width: 49%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 1rem;
     line-height: 44px;
 
@@ -66,4 +69,10 @@
     background-color: white;
     border-radius: 4px;
     padding: 4px;
+}
+
+@media screen and (max-width:768px) {
+    #populer{
+        display: none;
+    }
 }
