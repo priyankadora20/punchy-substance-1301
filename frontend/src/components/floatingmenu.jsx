@@ -21,7 +21,7 @@ export const Floatingmenu=()=>{
         <>
         {
             menu&&<Box  position='fixed' top='40%' right='1%' bgColor='#F1F6FD' zIndex='2' display='flex' flexDirection='column' gap='15px' p='15px'>
-            <Link><FaHome fontSize='30px' color="teal"/></Link>
+            <Link to='/landing'><FaHome fontSize='30px' color="teal"/></Link>
             <Link><FaCartArrowDown fontSize='30px' color="teal"/></Link>
             <Link><FaHome fontSize='30px' color="teal"/></Link>
             <Lin to='#top' smooth><FaArrowUp fontSize='30px' color="teal"/></Lin>

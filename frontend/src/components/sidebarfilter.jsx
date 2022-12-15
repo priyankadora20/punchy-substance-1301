@@ -5,25 +5,24 @@ import { useSearchParams } from "react-router-dom";
 
 export const Sidebarfilter=()=>{
     const [searchParams,setSearchParams]=useSearchParams();
-    const [category,setCategory]=useState(searchParams.getAll("category")||[])
+    const [product,setProduct]=useState(searchParams.getAll("products")||[])
 
     const handlefilter=(e)=>{
         const option=e.target.value
-        let newcategory=[...category];
+        let newcategory=[...product];
         if(newcategory.includes(option)){
             newcategory.splice(newcategory.indexOf(option),1)
         }else{
             newcategory.push(option);
         }
-        setCategory(newcategory)
+        setProduct(newcategory)
     }
 
     useEffect(()=>{
         const params={}
-        category&&(params.category=category);
+        product&&(params.product=product);
         setSearchParams(params);
-
-    },[category,setSearchParams])
+    },[product,setSearchParams])
     return(
         <Box  p='20px' bgColor='white' className="hisingle">
            <Box textAlign='center'> 
@@ -31,12 +30,12 @@ export const Sidebarfilter=()=>{
            </Box>
            <Box display='flex' flexDirection='column' gap='20px' mt='20px'>
                 <Box display='flex' gap='10px'>
-                    <input type="checkbox" value="Beachwear" defaultChecked={category.includes("Beachwear")} onChange={handlefilter} />
-                    <label>Beachwear</label>
+                    <input type="checkbox" value="gadget" defaultChecked={product.includes("gadget")} onChange={handlefilter} />
+                    <label>gadget</label>
                 </Box>
                 <Box display='flex' gap='10px'>
-                    <input type="checkbox" value="Suits" defaultChecked={category.includes("Suits")} onChange={handlefilter} />
-                    <label>Suits</label>
+                    <input type="checkbox" value="cycle" defaultChecked={product.includes("cycle")} onChange={handlefilter} />
+                    <label>cycle</label>
                 </Box>
             </Box>
         </Box>

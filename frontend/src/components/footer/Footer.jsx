@@ -90,9 +90,10 @@ const Footer = () => {
   );
 };
 const FooterPageWraper = styled.div`
-  max-width: 1100px;
+  width: 100%;
   background-color: #f1f6fd;
   margin: auto;
+  margin-top:50px;
   height: auto;
   padding-bottom:5px;
 `;
