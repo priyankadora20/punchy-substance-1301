@@ -3,7 +3,7 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react"
 
 export const Trendingcategory=()=>{
     return (
-        <Box w='100%' mt='50px'>
+        <Box w='80%' m='auto' mt={{base:"500px",md:'500px',lg:'50px'}}>
             <Box>
                 <Heading>Trending Categories</Heading>
             </Box>

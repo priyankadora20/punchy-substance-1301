@@ -63,7 +63,7 @@ export const Newforyou = () => {
 
 
     return (
-        <Box mt='50px' w='100%' bgColor='#F1F6FD' pb='30px'>
+        <Box  w='80%' m='auto' mt='50px' bgColor='#F1F6FD' pb='30px'>
             <Box display='flex' alignItems='center' gap='20px' w='95%' m='auto'>
                 <Heading >New For You</Heading>
                 <Link><Text color='blue'>See More</Text></Link>
