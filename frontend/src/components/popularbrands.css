@@ -1,0 +1,54 @@
+.firsts{
+    display: flex;
+}
+.seconds{
+    display: none;
+}
+.thirds{
+    display: none;
+}
+.fourths{
+    display: none;
+}
+@media screen and (max-width:950px){
+    .firsts{
+        display: none;
+    }
+    .seconds{
+        display: flex;
+    }
+    .thirds{
+        display: none;
+    }
+    .fourths{
+        display: none;
+    }
+}
+@media screen and (max-width:780px){
+    .firsts{
+        display: none;
+    }
+    .seconds{
+        display: none;
+    }
+    .thirds{
+        display: flex;
+    }
+    .fourths{
+        display: none;
+    }
+}
+@media screen and (max-width:550px){
+    .firsts{
+        display: none;
+    }
+    .seconds{
+        display: none;
+    }
+    .thirds{
+        display: none;
+    }
+    .fourths{
+        display: flex;
+    }
+}

@@ -115,15 +115,70 @@
 .menu_list .li:hover .cat_list{
     display: block;
     position:absolute;
+    background-color: white;
+    padding-left: 4px;
+    border-radius: 5px;
     color: black;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .menu_list .li:hover body{
     opacity: 0.3;
     z-index: 10;
 }
+
 .menu_list:hover .cat_list li{
     list-style: none;
+    line-height: 25px;
+
 }
+
+.menu_list:hover .cat_list ul{
+    text-align: center;
+
+}
+.cat_list :nth-child(1):hover {
+    background: gray;
+    width: 100%;
+}
+.cat_list :nth-child(2):hover {
+    background: gray;
+}
+
+.cat_list :nth-child(3):hover {
+    background: gray;
+}
+.cat_list :nth-child(4):hover {
+    background: gray;
+}
+.cat_list :nth-child(5):hover {
+    background: gray;
+}
+.cat_list :nth-child(6):hover {
+    background: gray;
+}
+
+.cat_list :nth-child(7):hover {
+    background: gray;
+    width: 100%;
+}
+.cat_list :nth-child(8):hover {
+    background: gray;
+}
+
+.cat_list :nth-child(9):hover {
+    background: gray;
+}
+.cat_list :nth-child(10):hover {
+    background: gray;
+}
+.cat_list :nth-child(11):hover {
+    background: gray;
+}
+.cat_list :nth-child(12):hover {
+    background: gray;
+}
+
+
 
 .country .country_list{
     display: none;
@@ -141,14 +196,16 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-
+.res_user_list{
+    display: none;
+}
 .li{
     list-style: none;
     font-weight:500;
     color: white;
     text-decoration: none;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     .list_container{
         display: none;
     }
@@ -162,27 +219,85 @@
     .res_menu{
         display: flex;
         justify-content: space-around;
-        font-size: 2rem;
+        font-size: 1.9rem;
+        align-items: center;
     }
     .res_search{
-        margin-top: 1.3rem;
+        width: 90%;
+        background-color: white;
+        margin: 1.3rem auto;
         text-align: center;
         display: flex;
         justify-content: center;
+        border-radius: 5px;
+        align-items: center;
     }
     .res_search input{
-        width: 70%;
+        width: 85%;
         height: 5vh;
-        border-radius: 1rem;
+        border: none;
+        outline: none;
+        padding-left: 5px;
     }
-    .menu_list{
+    .menu_list .cat_ham{
         display: none;
+    }
+    /*  for show nav in mobile */
+    #menulist{
+        display: block;
+        border: 1px solid black;
+        position: absolute;
+        padding-left: 10px;
+        color: black;
+    }
+    .menu_list .li{
+        text-align: center;
+    }
+  
+    /*  for click on hamburger and show nav in mobile */
+    #nav_list:checked~.menu_list{
+        left: 0;
     }
     .searching{
        display: none;
     }
+    .res_user:hover .res_user_list{
+        display: block;
+        position: absolute;
+        background-color: white;
+        width: 140px;
+        margin-left: -50px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 5px;
+    }
    
   
 
+    
+}
+
+@media screen and (max-width:768px) {
+    .list_container{
+        justify-content: center;
+    }
+    .searchbar{
+        width: 400px;
+    }
+    .searchbar input{
+        width: 280px;
+    }
+    .user:hover .user_list{
+        width: 200px;
+        margin-left: -100px;
+    }
+    .country{
+        display: none;
+    }
+    .userName{
+        display: none;
+    }
+}
+
+@media screen and (max-width:1024) {
     
 }
