@@ -8,6 +8,8 @@ productRouter.get("/", async (req, res) => {
   res.send(products);
 });
 productRouter.post("/add", async (req, res) => {
-  await ProductModel.insertMany();
+  let data = req.body;
+  await ProductModel.insertMany(data);
+  res.send("added");
 });
 module.exports = { productRouter };
