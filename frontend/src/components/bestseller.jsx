@@ -57,7 +57,7 @@ export const Bestseller = () => {
 
 
     React.useEffect(() => {
-        axios.get("https://fakestoreapi.com/products")
+        axios.get("http://localhost:8500/products")
             .then((res) => setTopran(res.data))
     }, [])
 
@@ -75,10 +75,10 @@ export const Bestseller = () => {
                         {
                             topran.length > 0 && topran.map((el, ind) => {
                                 return (
-                                    <Box key={ind} textAlign='center'>
+                                    <Link to={`/product/${el._id}`} key={ind}><Box textAlign='center' color='white'>
                                         <Image src={el.image} h='300px' w='96%'/>
                                         <Text h='80px' mt='10px' w='96%'>{el.title}</Text>
-                                    </Box>                                
+                                    </Box></Link>                                
                                 )
                             })
                         }

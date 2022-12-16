@@ -7,7 +7,7 @@ export const Trendingcategory=()=>{
             <Box>
                 <Heading>Trending Categories</Heading>
             </Box>
-            <Box w='100%' display='grid' gridTemplateColumns='repeat(auto-fit,minmax(250px,1fr))' gridTemplateRows='auto' gap='20px' mt='20px'>
+            <Box w='100%' display='grid' gridTemplateColumns='repeat(auto-fit,minmax(250px,1fr))' color='white' gridTemplateRows='auto' gap='20px' mt='20px'>
                 <Box display='flex' flexDirection='column' gap='1%'>
                    <Image src='https://img.gkbcdn.com/bn/2205/488x2743-628f62882b40c91f8cd36998._p1_.jpg' w='100%' h='75%'/>
                    <Heading fontSize='18px' h='10%'>Smart Home & Garden</Heading>
