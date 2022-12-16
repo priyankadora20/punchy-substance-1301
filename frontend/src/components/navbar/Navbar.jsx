@@ -150,7 +150,7 @@ const Navbar = () => {
                   margin: "10px",
                 }}
               >
-                <div>country name</div>
+                <div style={{fontSize:"15px"}}>Country Name</div>
                 <select style={{ border: "none" }}>
                   <option value="india"></option>
                   <option value="india">India</option>
@@ -175,7 +175,7 @@ const Navbar = () => {
                   margin: "10px",
                 }}
               >
-                <div>INR Rs</div>
+                <div style={{fontSize:"15px"}}>INR Rs</div>
                 <select style={{ border: "none" }}>
                   <option value="india"></option>
                   <option value="india">India</option>
@@ -271,8 +271,7 @@ const Navbar = () => {
                 />
               </div>
               <img
-                height="25"
-                style={{ padding: "27px" }}
+                width="35"
                 src={process.env.PUBLIC_URL + "/google-auth.png"}
                 alt="google"
               />
@@ -360,18 +359,15 @@ const Navbar = () => {
                 variant="outline"
               />
 
-              <MenuList pl={"0px"} color={"black"} fontSize={"20px"}>
-                <MenuItem>New Tab</MenuItem>
-                <MenuItem>New Window</MenuItem>
-                <MenuItem>Open Closed Tab</MenuItem>
-                <MenuItem>Open File...</MenuItem>
-                <MenuItem>New Tab</MenuItem>
-                <MenuItem>New Window</MenuItem>
-                <MenuItem>Open Closed Tab</MenuItem>
-                <MenuItem>Open File...</MenuItem>
-                <MenuItem>New Tab</MenuItem>
-                <MenuItem>New Window</MenuItem>
-                <MenuItem>Open Closed Tab</MenuItem>
+              <MenuList ml={"-20px"} color={"black"} fontSize={"20px"}>
+                <MenuItem>Category</MenuItem>
+                <MenuItem>New</MenuItem>
+                <MenuItem>Bestselling</MenuItem>
+                <MenuItem>Brand</MenuItem>
+                <MenuItem>Clearance</MenuItem>
+                <MenuItem>Deals</MenuItem>
+                <MenuItem>Coupons</MenuItem>
+                <MenuItem>App only</MenuItem>
                 <Flex >
                   <Input></Input>
                   <Button>Subscribe</Button>
@@ -446,8 +442,20 @@ const Navbar = () => {
                 </span>
               </div>
             </span>{" "}
-            <span>
+            <span style={{ display: "flex" }}>
               <BsCart3 />
+              <sup
+                style={{
+                  backgroundColor: "red",
+                  color: "white",
+                  borderRadius: "40%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                5
+              </sup>
             </span>
           </div>
           <FiSearch color="#2c8afb" fontSize="24px" />
@@ -479,6 +487,7 @@ const NavPageWraper = styled.div`
 const SuggestionBox = styled.div`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: block;
+  z-index:999;
   flex: 1;
   width: 500px;
   position: absolute;
@@ -492,6 +501,7 @@ const SuggestionBox = styled.div`
   color: black;
 
   @media (max-width: 425px) {
+    margin-top:-20px;
     width: 60%;
     & * {
       margin: 5px;
@@ -500,5 +510,13 @@ const SuggestionBox = styled.div`
       background-color: gray;
     }
   }
+
+  @media (max-width: 768px) {
+    flex-1;
+    width: 52%;
+   
+   
+  }
+
 `;
 export default Navbar;
