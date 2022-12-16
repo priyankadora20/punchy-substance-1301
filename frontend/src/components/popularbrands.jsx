@@ -35,7 +35,7 @@ export const Popularbrands = () => {
 
 
     return (
-        <Box mt='50px' w='100%' bgColor='#F1F6FD' pb='30px'>
+        <Box mt='50px' w='80%' m='auto' bgColor='#F1F6FD' pb='30px'>
             <Box display='flex' w='95%' m='auto' h='300px' mt='20px' gap='20px' p='20px'>
                 <Box w={{base:'33%',md:'33%',lg:"24%"}} h='100%'>
                     <Image src='https://img.gkbcdn.com/bn/2212/LOKMATTIMEPRO-638d8d152b40c93c74f9ec1f._p1_.jpg' h='100%' w='100%'/>

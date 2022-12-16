@@ -92,6 +92,8 @@ const FooterPageWraper = styled.div`
   width: 100%;
   background-color: #f1f6fd;
   margin: auto;
+  margin-top:50px;
+  height: auto;
   padding-bottom:5px;
 
 
