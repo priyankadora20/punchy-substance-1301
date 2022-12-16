@@ -57,7 +57,7 @@ export const Newforyou = () => {
 
 
     React.useEffect(() => {
-        axios.get("https://fakestoreapi.com/products")
+        axios.get("http://localhost:8500/products")
             .then((res) => setTopran(res.data))
     }, [])
 
@@ -78,9 +78,9 @@ export const Newforyou = () => {
                         {
                             topran.length > 0 && topran.map((el, ind) => {
                                 return (
-                                    <Box key={ind}>
+                                    <Link to={`/product/${el._id}`} key={ind}><Box >
                                         <Image src={el.image} h='300px' w='93%'/>
-                                    </Box>                                
+                                    </Box></Link>                                
                                 )
                             })
                         }
