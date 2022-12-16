@@ -63,6 +63,7 @@
 .populer_search{
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 
 }
 .populer_search div{
@@ -74,5 +75,19 @@
 @media screen and (max-width:768px) {
     #populer{
         display: none;
+    }
+    .information{
+        justify-content: space-between;
+        margin: auto;
+    }
+    .apps img{
+        height: 130px;
+        width: 200px;
+    }
+    .email{
+        line-height: 25px;
+    }
+    .info_second{
+        display: block;
     }
 }

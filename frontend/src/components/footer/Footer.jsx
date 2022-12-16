@@ -29,21 +29,20 @@ const Footer = () => {
             </ul>
             <ul className={styles.help}>
                 <p>Supports</p>
-                <li>Order Status</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Waranty</li>
-                <li>F&Q'S</li>
-                <li>Sitemap</li>
+                <li>WhatGeek</li>
+                <li>Shiping Guide</li>
+                <li>Payment info</li>
+                <li>Wholesale</li>
+                <li>Drop shiping</li>
+                <li>Blog</li>
             </ul>
             <ul className={styles.help}>
                 <p>Policies</p>
-                <li>Order Status</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Waranty</li>
-                <li>F&Q'S</li>
-                <li>Sitemap</li>
+                <li>Terms & Condition</li>
+                <li>Return Policy</li>
+                <li>Privacy</li>
+                <li>Declaretion</li>
+                <li>Customs</li>
             </ul>
             <div className={styles.support}></div>
             <div className={styles.policies}></div>
