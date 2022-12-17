@@ -25,5 +25,8 @@ signupRouter.post("/", async (req, res) => {
     console.log(err);
   }
 });
-
+signupRouter.get("/data", async (req, res) => {
+  let users = await UserModel.find();
+  res.send(users);
+});
 module.exports = { signupRouter };
