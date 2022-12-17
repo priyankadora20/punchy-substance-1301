@@ -1,6 +1,7 @@
 import * as types from "./actionType";
 const initState = {
   suggestion: [],
+  queryData:[],
   isLoading: false,
   isError: false,
 };
