@@ -22,7 +22,7 @@ export const Popularbrands = () => {
     }
 
     React.useEffect(() => {
-        axios.get("https://fakestoreapi.com/products")
+        axios.get("http://localhost:8500/products")
             .then((res) => setTopran(res.data))
     }, [])
 
@@ -45,7 +45,7 @@ export const Popularbrands = () => {
                             first.length > 0 && first.map((el, ind) => {
                                 return (
                                     <Box key={ind} width='23%'>
-                                        <Image src={el.image} h='100%' w='100%'/>
+                                        <Link to={`/product/${el._id}`} ><Image src={el.image} h='100%' w='100%'/></Link>
                                     </Box>                                
                                 )
                             })

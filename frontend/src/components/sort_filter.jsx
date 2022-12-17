@@ -57,32 +57,47 @@ export const Funtionality=()=>{
         sortby&&(params.sortby=sortby)
         range.lower&&(params.from=range.lower)
         range.upper&&(params.upto=range.upper)
+        // console.log(params)
         setSearchParams(params);
 
     },[category,setSearchParams,sortby,range])
      return(
         <Box w='100%' m='auto' p='20px' className="hisingle" bgColor='white'>
-            <Box display='flex' justifyContent='space-between' alignItems='center' w='100%'>
-                <Box w='10%' color='gray'>
-                    <Heading fontSize='18px'>Filter :</Heading>
+            <Box display={{base:"flex",md:"flex",lg:"block"}} gap='2%'>
+                <Box display={{base:"block",md:"block",lg:"flex"}} justifyContent='space-between' alignItems='center' w={{base:"50%",md:"50%",lg:"100%"}} >
+                    <Box w={{base:"100%",md:"100%",lg:"8%"}} color='gray'>
+                        <Heading fontSize='18px'>Filter :</Heading>
+                    </Box>
+                    <Box display='flex' gap='5%' w={{base:"100%",md:"100%",lg:"5%"}}>
+                        <input type="checkbox" value="laptop" defaultChecked={category.includes("laptop")} onChange={handlefilter} />
+                        <label>laptop</label>
+                    </Box>
+                    <Box display='flex' gap='5%' w={{base:"100%",md:"100%",lg:"10%"}}>
+                        <input type="checkbox" value="headphones" defaultChecked={category.includes("headphones")} onChange={handlefilter} />
+                        <label>headphones</label>
+                    </Box>
+                    <Box display='flex' gap='5%' w={{base:"100%",md:"100%",lg:"8%"}}>
+                        <input type="checkbox" value="e-bikes" defaultChecked={category.includes("e-bikes")} onChange={handlefilter} />
+                        <label>e-bikes</label>
+                    </Box>
+                    <Box display='flex' gap='5%' w={{base:"100%",md:"100%",lg:"13%"}}>
+                        <input type="checkbox" value="3d printer" defaultChecked={category.includes("3d printer")} onChange={handlefilter} />
+                        <label>3d printer</label>
+                    </Box>
+                    <Box display='flex' gap='5%' w={{base:"100%",md:"100%",lg:"10%"}}>
+                        <input type="checkbox" value="speakers" defaultChecked={category.includes("speakers")} onChange={handlefilter} />
+                        <label>speakers</label>
+                    </Box>
                 </Box>
-                <Box display='flex' gap='10px' w='10%'>
-                    <input type="checkbox" value="Beachwear" defaultChecked={category.includes("Beachwear")} onChange={handlefilter} />
-                    <label>Beachwear</label>
-                </Box>
-                <Box display='flex' gap='10px' w='10%'>
-                    <input type="checkbox" value="Suits" defaultChecked={category.includes("Suits")} onChange={handlefilter} />
-                    <label>Suits</label>
-                </Box>
-                <Box display='flex' gap='10px' w='40%'  alignItems='center'>
-                    <Heading fontSize='18px' w='30%'>Price :</Heading>
-                    <Input placeholder="from" name='lower' value={range.lower} onChange={handlelimit} w='30%'/>
-                    <Input placeholder="to" name='upper' value={range.upper} onChange={handlelimit} w='30%'/>
+                <Box display={{base:"block",md:"block",lg:"flex"}} gap='2%' w={{base:"48%",md:"48%",lg:"100%"}}  alignItems='center' mt='20px'>
+                    <Heading fontSize='18px' w={{base:"100%",md:"100%",lg:"20%"}} color='gray'>Price :</Heading>
+                    <Input placeholder="from" name='lower' value={range.lower} onChange={handlelimit} w={{base:"100%",md:"100%",lg:"50%"}}/>
+                    <Input placeholder="to" name='upper' value={range.upper} onChange={handlelimit} w={{base:"100%",md:"100%",lg:"50%"}}/>
                     {/* <Button onClick={handlerange}>set</Button> */}
                 </Box>
             </Box>
-            <Box onChange={handlesort} display='flex' gap='2%' alignItems='center' mt='20px'>
-                <Box w='20%' color='gray'>
+            <Box onChange={handlesort} display={{base:"block",md:"block",lg:"flex"}} gap='2%' alignItems='center' mt='20px'>
+                <Box w={{base:"100%",md:"100%",lg:"15%"}} color='gray'>
                     <Heading fontSize='18px'>Sort By :</Heading>
                 </Box>
                 <Box display='flex' gap='10px'>

@@ -9,14 +9,9 @@ export const AllProduct = () => {
     return (
         <Box mt='100px'>
             <Particle/>
-            <Box display='flex' w='80%' m='auto' gap='5%'>
-                <Box w='20%'>
-                    <Sidebarfilter/>
-                </Box>
-                <Box w='75%'>
-                    <Funtionality />
-                    <DisplayAP />
-                </Box>
+            <Box  w='80%' m='auto' gap='5%'>
+                <Funtionality />
+                <DisplayAP />
             </Box>
         </Box>
     )

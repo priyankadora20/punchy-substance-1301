@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import {Floatingmenu} from "./floatingmenu"
 import { useLocation, useSearchParams } from "react-router-dom"
 import { ProductPagination } from "./productpagination"
+import { Link } from "react-router-dom"
 
 const validpage=(val)=>{
     val=Number(val);
@@ -23,11 +24,10 @@ export const DisplayAP=()=>{
     const location=useLocation()
     
     function get(queryParams){
-        axios.get("https://plum-perfect-anemone.cyclic.app/product",queryParams)
+        axios.get("http://localhost:8500/products",queryParams)
             .then((res) => {
-                // localStorage.setItem("high",res.headers.get("X-Total-Count"))
-                setTotalpage(Math.ceil(Number(res.headers.get("X-Total-Count"))/10))
-                setTopran(res.data)
+                setTotalpage(Math.ceil(Number(res.data.datacount)/12))
+                setTopran(res.data.data)
             })
             .catch(err=>console.log(err))
     }
@@ -43,13 +43,14 @@ export const DisplayAP=()=>{
                 params:{
                     category:category,
                     price_gte:Number(lowerlimit),
-                    price_lte:Number(upperlimit)||Math.max,
+                    price_lte:Number(upperlimit)||Infinity,
                     _page:page,
-                    _limit:10,
+                    _limit:12,
                     _sort: searchParams.get('sortby') && "price",
                     _order: searchParams.get('sortby')
                 }
             }
+            
             get(queryParams)
         }
         
@@ -61,12 +62,12 @@ export const DisplayAP=()=>{
             {
                 topran.length>0&&topran.map((el,ind)=>{
                     return(
-                        <Box className="hisingle" textAlign='center' h='300px' bgColor='white' display='flex' flexDirection='column' gap='2%' p='20px' key={ind}>
-                            <Image src={el.mainImage} w='100%' h='55%'/>
+                        <Link to={`/product/${el._id}`} key={ind}><Box className="hisingle" textAlign='center' h='300px' bgColor='white' display='flex' flexDirection='column' gap='2%' p='20px' >
+                            <Image src={el.image} w='100%' h='55%'/>
                             <Text >{el.category}</Text>
-                            <Text >{el.price}</Text>
-                            <Text >{el.title}</Text>
-                        </Box>
+                            <Text >₹ {el.price}</Text>
+                            <Text >{el.brand}</Text>
+                        </Box></Link>
                     )
                 })
             }
