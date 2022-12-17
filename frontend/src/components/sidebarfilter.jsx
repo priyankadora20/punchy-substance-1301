@@ -6,10 +6,12 @@ import { useSearchParams } from "react-router-dom";
 export const Sidebarfilter=()=>{
     const [searchParams,setSearchParams]=useSearchParams();
     const [product,setProduct]=useState(searchParams.getAll("products")||[])
+    const [category,setCategory]=useState(searchParams.getAll("category")||[])
 
     const handlefilter=(e)=>{
         const option=e.target.value
         let newcategory=[...product];
+        // console.log(newcategory,category)
         if(newcategory.includes(option)){
             newcategory.splice(newcategory.indexOf(option),1)
         }else{
@@ -21,6 +23,7 @@ export const Sidebarfilter=()=>{
     useEffect(()=>{
         const params={}
         product&&(params.product=product);
+        // console.log(params)
         setSearchParams(params);
     },[product,setSearchParams])
     return(
