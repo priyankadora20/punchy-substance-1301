@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import styles from "../styles/navbar.module.css";
 import { BsChevronDown, BsCart3 } from "react-icons/bs";
@@ -21,52 +21,27 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import { icons } from "react-icons";
-import axios from "axios";
+import ShowSearching from "../searchPage/ShowSearching";
 const Navbar = () => {
   const [query, setQuery] = useState("");
-  const [suggvalue, setSuggvalue] = useState("");
   const [searchQueryVal,setSearchQueryVal]=useState("")
   const data = useSelector((store) => store.suggestionReducer.suggestion);
-  const [suggestion, setSuggestion] = useState([]);
-  console.log("suggvalue", suggvalue);
+
+
+  console.log("suggvalue", query);
   const dispatch = useDispatch();
 
-  const queryHandler = useCallback((val) => {
-    setQuery(val);
-  }, []);
-
+ 
  useEffect(()=>{
-  // if(searchQueryVal){
-  //   axios.get(`https://fakestoreapi.com/products/category/${searchQueryVal}`).the((r)=>{
-  //       console.log("search",r)
-  //   }).catch((e)=>{
-  //     console.log(e)
-  //   })
-  // }
+ 
  },[searchQueryVal])
   useEffect(() => {
     if (data.length === 0) {
       dispatch(getData());
     }
   }, [data.length, dispatch]);
-  useEffect(() => {
-    if (query === "") {
-      setSuggestion([]);
-    } else {
-      let querywithouspace = query.trim().toLocaleLowerCase();
-      let newsuggetion = data
-        .filter((ele) => {
-          return ele.category.toLowerCase().indexOf(querywithouspace) !== -1
-            ? true
-            : false;
-        })
-        .map((e) => {
-          return e.category;
-        });
-      setSuggestion(newsuggetion);
-    }
-  }, [query, data, suggvalue]);
+
+  
   return (
     <>
       <NavPageWraper>
@@ -122,18 +97,9 @@ const Navbar = () => {
             />
           </div>
 
-          <span>
-            <SearchPage setQuery={queryHandler} suggvalue={suggvalue} />
-            <SuggestionBox limit={5}>
-              {suggestion?.map((e, i) => (
-                <div key={i} onClick={() => setSuggvalue(e)}>
-                  {/* <Link to={`${i}`}>{e}</Link> */}
-
-                  {/* this is for test above is when want redirect */}
-                  <div onClick={()=>setSearchQueryVal(e)}>{e}</div>
-                </div>
-              ))}
-            </SuggestionBox>
+          <span >
+            <ShowSearching/>
+           
           </span>
 
           <div className={styles.country}>
@@ -346,11 +312,7 @@ const Navbar = () => {
 
         <div className={styles.responsivenav}>
           <div className={styles.res_menu}>
-            {/* <span>
-              <label for="nav_check" id="hamburger">
-                <RxHamburgerMenu />
-              </label>     
-            </span> */}
+     
             <Menu>
               <MenuButton
                 as={IconButton}
@@ -459,12 +421,9 @@ const Navbar = () => {
             </span>
           </div>
           <FiSearch color="#2c8afb" fontSize="24px" />
-          <SearchPage setQuery={queryHandler} />
-          <SuggestionBox limit={5}>
-            {suggestion?.map((e, i) => (
-              <div key={i}>{e}</div>
-            ))}
-          </SuggestionBox>
+
+          <ShowSearching/>
+       
         </div>
       </NavPageWraper>
     </>
@@ -484,39 +443,4 @@ const NavPageWraper = styled.div`
   }
 `;
 
-const SuggestionBox = styled.div`
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  display: block;
-  z-index:999;
-  flex: 1;
-  width: 500px;
-  position: absolute;
-  line-height: 30px;
-  padding-left: 10px;
-  border-radius: 5px;
-  max-height: ${({ limit }) => `${limit * 30}px`};
-  background-color: white;
-  overflow: auto;
-  margin: auto;
-  color: black;
-
-  @media (max-width: 425px) {
-    margin-top:-20px;
-    width: 60%;
-    & * {
-      margin: 5px;
-    }
-    &:hover div {
-      background-color: gray;
-    }
-  }
-
-  @media (max-width: 768px) {
-    flex-1;
-    width: 52%;
-   
-   
-  }
-
-`;
 export default Navbar;
