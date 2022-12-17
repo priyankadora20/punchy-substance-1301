@@ -1,0 +1,58 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#payment_method {
+    /* border: 1px solid; */
+    width: 60%;
+    margin: auto;
+    margin-top: 3%;
+  }
+  
+
+  #payment_method h4{
+    font-size: 16px;
+    margin-bottom: 2%;
+}
+
+.pay_opt{
+    border: 1px solid silver;
+    border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.pay_opt > div:nth-child(1){
+    /* border: 1px solid silver; */
+    width: 68%;
+}
+
+.pay_opt > div:nth-child(2){
+    /* border: 1px solid silver; */
+    width: 30%;
+}
+
+.pay_box{
+    padding: 1% 2%;
+    display: block;
+    margin: auto;
+}
+
+.pay_box div{
+    display: flex;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    justify-content: space-between;
+}
+
+#pow_pay{
+    height: 30px;
+    margin: auto;
+}
+
+#deb-card:hover{
+    color: black;
+}

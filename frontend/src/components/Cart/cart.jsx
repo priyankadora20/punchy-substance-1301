@@ -31,7 +31,7 @@ const CartPage = () => {
 
   useEffect(() => {
    
-    fetch("https://geek-buting-clone.onrender.com/cartdata",{
+    fetch("https://fakestoreapi.com/products/1",{
     
       method:"GET",
       headers: {

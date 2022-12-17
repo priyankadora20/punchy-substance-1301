@@ -1,0 +1,28 @@
+.bank_bg{
+    position: relative;
+}
+
+.bank_form_div{
+    position: absolute;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: rgba(35, 35, 35, 0.667);
+    padding: 2%;
+    color: white;
+    top: 20%;
+    left:5%
+   
+}
+
+
+.otp{
+    position: absolute;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: rgba(35, 35, 35, 0.667);
+    padding: 2%;
+    color: white;
+    top: 47%;
+    left:5%
+   
+}

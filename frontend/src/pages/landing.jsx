@@ -10,6 +10,7 @@ import { Floatingmenu } from "../components/floatingmenu";
 import { Bestseller } from "../components/bestseller";
 import { Popularbrands } from "../components/popularbrands";
 import { Particle } from "../components/particle";
+import { Link } from "react-router-dom";
 
 const car_data = [
     {
@@ -53,8 +54,9 @@ export const Landing = () => {
     }
 
     React.useEffect(() => {
-        axios.get("https://fakestoreapi.com/products")
+        axios.get("http://localhost:8500/products")
             .then((res) => setTopran(res.data))
+            .catch(err=>console.log(err))
     }, [])
 
     useEffect(() => {
@@ -85,7 +87,7 @@ export const Landing = () => {
                                     first.length > 0 && first.map((el, ind) => {
                                         return (
                                             <Box w='18%' key={ind}>
-                                                <Image src={el.image} h='80%' w='100%' />
+                                                <Link to={`/product/${el._id}`}><Image src={el.image} h='80%' w='100%' /></Link>
                                                 <Text fontSize={{ base: '13px', md: '15px', lg: '17px' }} h='20%'>{el.price}</Text>
                                             </Box>
                                         )
@@ -102,7 +104,7 @@ export const Landing = () => {
                                     second.length > 0 && second.map((el, ind) => {
                                         return (
                                             <Box w='23%' key={ind} display='flex' h='100%' flexDirection='column' alignItems='center' gap='1%'>
-                                                <Image src={el.image} h='60%' w='100%' />
+                                                <Link to={`/product/${el._id}`} ><Image src={el.image} h='60%' w='100%' /></Link>
                                                 <Text h='20%' fontSize={{ base: '13px', md: '15px', lg: '17px' }} w='100%'>{el.category}</Text>
                                             </Box>
                                         )
