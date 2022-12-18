@@ -1,7 +1,7 @@
-import { Box, Heading } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import { DisplayAP } from "../components/displayallproducts"
 import { Particle } from "../components/particle"
-import { Sidebarfilter } from "../components/sidebarfilter"
+// import { Sidebarfilter } from "../components/sidebarfilter"
 import { Funtionality } from "../components/sort_filter"
 
 

@@ -8,9 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useDispatch } from "react-redux";
-
 import { Particle } from "../components/particle";
-import { Link } from "react-router-dom";
 import { addData } from "../redux/adminReducer/action";
 const AddProduct = () => {
   const [title, setTitle] = React.useState("");
@@ -22,7 +20,7 @@ const AddProduct = () => {
   const handleSubmit = () => {
     const payload = {
       title,
-      url,
+      image: url,
       about,
       price,
       category: "new",
@@ -36,23 +34,6 @@ const AddProduct = () => {
   return (
     <div>
       <Particle />
-      <Container
-        zIndex={10}
-        pos={"fixed"}
-        top="0px"
-        paddingBottom={"20px"}
-        paddingTop={"20px"}
-        height={"auto"}
-        bg="#df1919"
-        maxW={"100%"}
-        justifyContent="center"
-        display={"flex"}
-        alignItems="center"
-      >
-        <Link to={"/"}>
-          <img src="/gadgetstop.jpeg" alt="" />
-        </Link>
-      </Container>
       <Container
         bg={"white"}
         maxW={{ lg: "30%", md: "50%", sm: "70%", base: "90%" }}

@@ -1,0 +1,9 @@
+.delete_item
+{
+    cursor: pointer;
+}
+.delete_item:hover
+{
+    text-decoration: underline;
+    color: blue;
+}

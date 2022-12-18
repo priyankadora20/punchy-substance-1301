@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from "@chakra-ui/react"
+import { Box, Heading } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 export const Sidebarfilter=()=>{
     const [searchParams,setSearchParams]=useSearchParams();
     const [product,setProduct]=useState(searchParams.getAll("products")||[])
-    const [category,setCategory]=useState(searchParams.getAll("category")||[])
+    // const [category,setCategory]=useState(searchParams.getAll("category")||[])
 
     const handlefilter=(e)=>{
         const option=e.target.value
@@ -27,7 +27,7 @@ export const Sidebarfilter=()=>{
         setSearchParams(params);
     },[product,setSearchParams])
     return(
-        <Box  p='20px' bgColor='white' className="hisingle">
+        <Box  p='20px' bgColor='white' >
            <Box textAlign='center'> 
              <Heading fontSize='20px' color='gray'>All Categories</Heading>
            </Box>
