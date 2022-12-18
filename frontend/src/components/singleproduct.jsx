@@ -38,7 +38,7 @@ export const SingleProduct=()=>{
 
      getsingledata()
     },[setData,getsingledata])
-
+        useEffect(()=>{
         setLoading(true)
         window.scrollTo(0, 0);
         getsingledata()
