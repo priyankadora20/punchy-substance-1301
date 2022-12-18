@@ -11,6 +11,7 @@ import { Bestseller } from "../components/bestseller";
 import { Popularbrands } from "../components/popularbrands";
 import { Particle } from "../components/particle";
 import { Link } from "react-router-dom";
+import ClockLoader from "react-spinners/ClockLoader";
 
 const car_data = [
     {
@@ -34,6 +35,7 @@ export const Landing = () => {
     const [topran, setTopran] = React.useState([])
     const [first, setFirst] = React.useState([])
     const [second, setSecond] = React.useState([])
+    const [loading,setLoading]=React.useState(false)
 
     const settings = {
         dots: true,
@@ -54,9 +56,17 @@ export const Landing = () => {
     }
 
     React.useEffect(() => {
+        setLoading(true)
+        window.scrollTo(0, 0);
         axios.get("http://localhost:8500/products")
-            .then((res) => setTopran(res.data))
-            .catch(err=>console.log(err))
+            .then((res) => {
+                setLoading(false)
+                setTopran(res.data)
+            })
+            .catch(err=>{
+                setLoading(false)
+                console.log(err)
+            })
     }, [])
 
     useEffect(() => {
@@ -64,31 +74,42 @@ export const Landing = () => {
         setSecond(getMultipleRandom(topran, 4));
     }, [topran])
     return (
-        <Box id="top" >
+        <>
+        {
+            loading&&<Box width='100%' h='100vh' display='flex' alignItems='center' justifyContent='center'><ClockLoader
+            color={'teal'}
+            loading={loading}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          /></Box>
+        }
+        {
+            !loading&&<Box id="top" >
             <Particle />
-            <Box w='80%' m='auto' h='500px' boxSizing="border-box" mt='100px' >
+            <Box w='80%' m='auto' h='550px' boxSizing="border-box" mt='100px' >
                 <Box w='100%' display='flex' flexDirection={{ base: 'column', md: 'column', lg: 'row' }} justifyContent='space-between' >
-                    <Box w={{ base: '100%', md: '100%', lg: '35%' }} h='500px'>
-                        <Slider {...settings} h='100%'>
+                    <Box w={{ base: '100%', md: '100%', lg: '39%' }} h='550px'>
+                        <Link to='/product'><Slider {...settings} h='100%'>
                             {
                                 car_data.map((el, ind) => {
-                                    return <Image src={el.img} h='470px' alt='image' key={ind} />
+                                    return <Image src={el.img} h='530px' alt='image' key={ind} />
                                 })
                             }
-                        </Slider>
+                        </Slider></Link>
                     </Box>
-                    <Box w={{ base: '100%', md: '100%', lg: '60%' }} h='470px' display='flex' flexDirection='column' gap='30px'>
-                        <Box display='flex' flexDirection='column' gap='30px' h='40%' bgColor='#F1F6FD' p='20px'>
+                    <Box w={{ base: '100%', md: '100%', lg: '60%' }} h='550px' display='flex' flexDirection='column' gap='30px'>
+                        <Box display='flex' flexDirection='column' gap='30px' h='250px' bgColor='#F1F6FD' p='20px'>
                             <Box h='20%'>
                                 <Heading fontSize='20px'>Deal of the Day</Heading>
                             </Box>
-                            <Box display='flex' justifyContent='space-between' h='60%' textAlign='center'>
+                            <Box display='flex' justifyContent='space-between' h='80%' textAlign='center'>
                                 {
                                     first.length > 0 && first.map((el, ind) => {
                                         return (
-                                            <Box w='18%' key={ind}>
-                                                <Link to={`/product/${el._id}`}><Image src={el.image} h='80%' w='100%' /></Link>
-                                                <Text fontSize={{ base: '13px', md: '15px', lg: '17px' }} h='20%'>{el.price}</Text>
+                                            <Box w='23%' key={ind}>
+                                                <Link to={`/product/${el._id}`}><Image src={el.image} h={{base:'70%',md:'70%',lg:'70%'}} w='100%' /></Link>
+                                                <Text fontSize={{ base: '13px', md: '15px', lg: '17px' }} h='20%' mt='5%'>₹ {el.price}</Text>
                                             </Box>
                                         )
                                     })
@@ -103,9 +124,11 @@ export const Landing = () => {
                                 {
                                     second.length > 0 && second.map((el, ind) => {
                                         return (
-                                            <Box w='23%' key={ind} display='flex' h='100%' flexDirection='column' alignItems='center' gap='1%'>
-                                                <Link to={`/product/${el._id}`} ><Image src={el.image} h='60%' w='100%' /></Link>
-                                                <Text h='20%' fontSize={{ base: '13px', md: '15px', lg: '17px' }} w='100%'>{el.category}</Text>
+                                            <Box w='23%' key={ind}  h='100%'>
+                                                <Box w='100%' h='100%' textAlign='center'>
+                                                    <Link to={`/product/${el._id}`} ><Image src={el.image} h={{base:'70%',md:'70%',lg:'60%'}} w='100%' /></Link>
+                                                    <Text h='20%' fontSize={{ base: '13px', md: '15px', lg: '17px' }} w='100%' mt='5%'>{el.category}</Text>
+                                                </Box>
                                             </Box>
                                         )
                                     })
@@ -117,15 +140,19 @@ export const Landing = () => {
                 </Box>
                 <Trendingcategory />
                 <Newforyou />
-                <Bestseller />
+                <Box mt='50px'>
+                    <Bestseller />
+                </Box>
                 <Box display='flex' alignItems='center' m='auto' justifyContent='center' mt='100px'>
-                    <Heading >Popular Brands</Heading>
+                    <Heading color='white'>Popular Brands</Heading>
                 </Box>
                 <Popularbrands />
                 <Popularbrands />
                 <Popularbrands />
                 <Floatingmenu />
             </Box>
+        }
+        </>
             
         
 

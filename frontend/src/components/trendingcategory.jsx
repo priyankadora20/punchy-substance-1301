@@ -3,9 +3,9 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react"
 
 export const Trendingcategory=()=>{
     return (
-        <Box w='80%' m='auto' mt={{base:"500px",md:'500px',lg:'50px'}}>
+        <Box w='80%' m='auto' mt={{base:"550px",md:'550px',lg:'50px'}}>
             <Box>
-                <Heading>Trending Categories</Heading>
+                <Heading color='white'>Trending Categories</Heading>
             </Box>
             <Box w='100%' display='grid' gridTemplateColumns='repeat(auto-fit,minmax(250px,1fr))' color='white' gridTemplateRows='auto' gap='20px' mt='20px'>
                 <Box display='flex' flexDirection='column' gap='1%'>

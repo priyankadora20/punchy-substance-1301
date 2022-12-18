@@ -7,7 +7,7 @@ import { SingleProduct } from "../components/singleproduct"
 export const AllRoutes=()=>{
     return(
         <Routes>
-            <Route path='/landing' element={<Landing/>}/>
+            <Route path='/' element={<Landing/>}/>
             <Route path='/product' element={<AllProduct/>}/>
             <Route path='/product/:productID' element={<SingleProduct/>}/>
         </Routes>
