@@ -18,7 +18,7 @@ export const SingleProduct=()=>{
     
     useEffect(()=>{
      getsingledata()
-    },[setData])
+    },[setData,getsingledata])
     const [simple]=data
     return(
         // <Box>

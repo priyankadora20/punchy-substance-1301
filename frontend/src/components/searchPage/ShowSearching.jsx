@@ -7,7 +7,7 @@ import axios from "axios";
 const ShowSearching = () => {
   const [suggestion, setSuggestion] = useState([]);
   const [query, setQuery] = useState("");
-  const [suggValue,setSuggValue]=useState("")
+
   const dispatch = useDispatch();
 
   const data = useSelector((store) => store.suggestionReducer.suggestion);
@@ -50,11 +50,10 @@ const ShowSearching = () => {
           setSuggestion(newsuggetion);
     }
   }, [query,data]);
-  // console.log("from suggestion",suggestion)
  
   return (
     <div>
-      <SearchPage setQuery={queryHandler} suggestion={suggestion} setSuggValue={setSuggValue}/>
+      <SearchPage setQuery={queryHandler} suggestion={suggestion} setSuggestion={setSuggestion}/>
     </div>
   );
 };
