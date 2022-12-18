@@ -29,7 +29,7 @@ const OrderSummaryPage = () => {
     setShip(true);
   }
 
-  console.log(ship)
+  console.log("ship:",ship)
 
 
   const handleInput = (e) => {
@@ -47,7 +47,7 @@ const OrderSummaryPage = () => {
 
   useEffect(() => {
    
-    fetch("https://geek-buting-clone.onrender.com/cartdata",{
+    fetch("http://localhost:8500/cart",{
     
       method:"GET",
       headers: {
@@ -84,7 +84,24 @@ const OrderSummaryPage = () => {
    setSum(grandTotal)
   
   }
+let coupon=""
+const handleCoupon=(e)=>{
+  e.preventDefault()
+   coupon = e.target.value;
+  };
 
+  const handleDiscount=(e)=>{
+
+    e.preventDefault();
+    if(coupon==="GB20")
+    {
+     var grandtotal=grandTotal-(0.2*grandTotal)
+      setSum(grandtotal)
+    }
+    else{
+      setSum(grandTotal)
+    }
+  }
 
   return (
     <div>
@@ -503,7 +520,7 @@ const OrderSummaryPage = () => {
          {cartItems.length > 0 && cartItems.map((item)=>{
            return(
               <Box key={item._id}>
-                  <CartItem getmrp= {getmrp} setSum={setSum} sum= {sum} name= {item.items_p} image={item.lazy_img_src} price= {item.items_price}/>
+                  <CartItem getmrp= {getmrp} setSum={setSum} sum= {sum} name= {item.title} image={item.image} price= {item.price}/>
               </Box>
            )
          })}        
@@ -574,10 +591,11 @@ const OrderSummaryPage = () => {
             <br />
             <Box>
               <input
+              onChange={(e)=>handleCoupon(e)}
                 placeholder="Please enter or choose your coupon code"
                 type="text"
               />
-              <Button>Apply</Button>
+              <Button onClick={(e)=>handleDiscount(e)} >Apply</Button>
             </Box>
           </Box>
           <Box>
@@ -591,7 +609,18 @@ const OrderSummaryPage = () => {
             </Box>
             <Box>
               <span>Grand Total: </span>
-              <Text>{sum.toFixed(2)}</Text>
+              <Text>
+              {/* if(ship)
+              {
+                sum.toFixed(2)+Number(4302.711)
+              
+              }
+              else
+              {
+                sum.toFixed(2)+Number(0)
+              } */}
+              {(ship)?Number(sum.toFixed(2))+Number(extra):sum.toFixed(2)+0}
+              </Text>
             </Box>
            <Link to={"/payment"}>
            <Button>Place Your Order</Button>

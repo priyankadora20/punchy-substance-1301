@@ -13,6 +13,7 @@
     "framer-motion": "^7.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-elastic-carousel": "^0.11.5",
     "react-icons": "^4.7.1",
     "react-image-magnify": "^2.7.4",
     "react-redux": "^8.0.5",
