@@ -3,6 +3,7 @@ import * as types from "./actionTypes";
 const initialState = {
   isAuth: false,
   isSign: false,
+  isAdmin:false,
   token: "",
   isLoading: false,
   isError: false,
@@ -21,7 +22,8 @@ const reducer = (state = initialState, action) => {
     case types.LOGIN_SUCCESS:
       return {
         isLoading: false,
-        token: payload,
+        token: payload.token,
+        isAdmin: payload.userType === "admin" ? true : false,
         isError: false,
         isAuth: true,
       };
