@@ -35,7 +35,9 @@ export const SingleProduct = () => {
             })
     }, [setCart])
 
-    useEffect(() => {
+ 
+    
+        useEffect(()=>{
         setLoading(true)
         window.scrollTo(0, 0);
         getsingledata()

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import styles from "../styles/navbar.module.css";
 import { BsChevronDown, BsCart3 } from "react-icons/bs";
@@ -21,9 +21,11 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import ShowSearching from "../searchPage/ShowSearching";
+import axios from "axios";
 const Navbar = () => {
   const data = useSelector((store) => store.suggestionReducer.suggestion);
-
+  const isAdmin=useSelector((e)=>e.authreducer.isAdmin)
+  const [cartLen,setCartLen]=useState(0)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,6 +34,13 @@ const Navbar = () => {
     }
   }, [data.length, dispatch]);
 
+  useEffect(()=>{
+    axios.get("http://localhost:8500/cart").then((r)=>{
+      setCartLen(r.data.length)
+    }).catch((e)=>{
+      console.log(e)
+    })
+  },[cartLen])
   
   return (
     <>
@@ -81,11 +90,13 @@ const Navbar = () => {
         <hr />
         <div className={styles.searching}>
           <div>
+            <Link to={"/"}>
             <img
               width="100"
               src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
               alt="gedgetsstop"
-            />
+              />
+              </Link>
           </div>
 
           <span >
@@ -187,7 +198,9 @@ const Navbar = () => {
                     fontSize: "22px",
                   }}
                 >
-                  Join
+                    <Link to={"/login"}>
+                    Join
+                    </Link>
                 </button>
                 <button
                   style={{
@@ -199,7 +212,9 @@ const Navbar = () => {
                     fontSize: "22px",
                   }}
                 >
-                  Sign In
+                  <Link to={"/signup"}>
+                    Sign In
+                    </Link>
                 </button>
               </div>
               <div
@@ -250,7 +265,7 @@ const Navbar = () => {
                   justifyContent: "center",
                 }}
               >
-                5
+                {cartLen}
               </sup>
             </div>
           </div>
@@ -277,27 +292,27 @@ const Navbar = () => {
               <li>Wearable Devices</li>
             </ul>
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={`/product`} className={styles.li}>
             New
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Bestselling
           </Link>
 
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Brand
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Clearance
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Deals
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Coupons
           </Link>
-          <Link to={"#"} className={styles.li}>
-            App only
+          <Link to={"/addproduct"} className={styles.li}>
+            {isAdmin?"Add Product":""}
           </Link>
         </ul>
 
@@ -320,18 +335,20 @@ const Navbar = () => {
                 <MenuItem>Clearance</MenuItem>
                 <MenuItem>Deals</MenuItem>
                 <MenuItem>Coupons</MenuItem>
-                <MenuItem>App only</MenuItem>
+                <MenuItem>{isAdmin?"Add Product":""}</MenuItem>
                 <Flex >
                   <Input></Input>
                   <Button>Subscribe</Button>
                 </Flex>
               </MenuList>
             </Menu>
+            <Link to={"/"}>
             <img
               width="90"
               src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
               alt="logo"
-            />
+              />
+              </Link>
             <span className={styles.res_user}>
               <AiOutlineUser />
 
@@ -358,7 +375,9 @@ const Navbar = () => {
                       borderRadius: "5px",
                     }}
                   >
+                     <Link to={"/login"}>
                     Login
+                    </Link>
                   </button>
                   <button
                     style={{
@@ -371,7 +390,9 @@ const Navbar = () => {
                       borderRadius: "5px",
                     }}
                   >
-                    Sign In
+                    <Link to={"/signup"}>
+                    Signup
+                    </Link>
                   </button>
                 </div>
                 <div
@@ -407,7 +428,7 @@ const Navbar = () => {
                   justifyContent: "center",
                 }}
               >
-                5
+                {cartLen}
               </sup>
             </span>
           </div>
