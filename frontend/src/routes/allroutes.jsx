@@ -26,7 +26,10 @@ export const AllRoutes = () => {
       <Route path="/order" element={<OrderSummaryPage />} />
       <Route path="/payment" element={<PaymentPage />} />
       <Route path="/bank" element={<Bank />} />
+      <Route path="/newpage" element={<Newpage />} />
+      <Route path="/coupons" element={<Coupons />} />
       <Route path="/end" element={<End />} />
+     
       <Route
         path="/addproduct"
         element={
