@@ -29,18 +29,6 @@ export const SingleProduct=()=>{
     },[getsingledata])
     const [simple]=data
     return(
-        // <Box>
-        //     {
-        //         data.length>0&&data?.map((el)=>{
-        //             return(
-        //                 <Box key={el._id}>
-        //                     <Image src={el.image}/>
-        //                     <Text>{el.title}</Text>
-        //                 </Box>
-        //             )
-        //         })
-        //     }
-        // </Box>
         <>
         {
           loading&&<Box width='100%' h='100vh' display='flex' alignItems='center' justifyContent='center'><ClockLoader

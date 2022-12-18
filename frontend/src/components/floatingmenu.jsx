@@ -16,6 +16,10 @@ export const Floatingmenu=()=>{
         SetMenu(true)
        }
     }
+
+    const moveup=()=>{
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
     window.addEventListener('scroll',showtab)
     return(
         <>
@@ -24,7 +28,7 @@ export const Floatingmenu=()=>{
             <Link to='/'><FaHome fontSize='30px' color="teal"/></Link>
             <Link to='/cart'><FaCartArrowDown fontSize='30px' color="teal"/></Link>
             <Link to='/product'><FaEye fontSize='30px' color="teal"/></Link>
-            <Lin to='#top' smooth><FaArrowUp fontSize='30px' color="teal"/></Lin>
+            <FaArrowUp fontSize='30px' color="teal" onClick={moveup} cursor='pointer'/>
          </Box>
         }
         </>
