@@ -2,7 +2,7 @@ const express = require("express");
 const gadgetsRouter = express.Router();
 const { GadgetsModel } = require("../models/gadgets.models");
 
-gadgetsRouter.get("/backendview", async (req, res) => {
+gadgetsRouter.get("/", async (req, res) => {
   const params = req.query;
   try {
     const users = await GadgetsModel.find(params);
@@ -13,7 +13,7 @@ gadgetsRouter.get("/backendview", async (req, res) => {
   }
 });
 
-gadgetsRouter.post("/backendcreate", async (req, res) => {
+gadgetsRouter.post("/addproduct", async (req, res) => {
   const payload = req.body;
   try {
     const user = new GadgetsModel(payload);
