@@ -9,18 +9,18 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case types.LOGIN_REQUEST:
+    case types.GET_REQUEST:
       return {
         isLoading: true,
         isError: false,
       };
-    case types.LOGIN_SUCCESS:
+    case types.GET_SUCCESS:
       return {
         isLoading: false,
         isError: false,
         data: payload,
       };
-    case types.LOGIN_FAILURE:
+    case types.GET_FAILURE:
       return {
         isLoading: false,
         isError: true,
