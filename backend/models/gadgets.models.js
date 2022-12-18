@@ -4,8 +4,7 @@ const gadgetsSchema = mongoose.Schema({
   image1: {
     type: String,
   },
-  images: [],
-  name: {
+  title: {
     type: String,
   },
   price: {
@@ -16,7 +15,7 @@ const gadgetsSchema = mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ["electronics", "vehicle", "geeks"],
+    enum: ["new"],
   },
 });
 const GadgetsModel = mongoose.model("gadgets", gadgetsSchema);

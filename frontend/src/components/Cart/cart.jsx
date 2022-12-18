@@ -31,7 +31,7 @@ const CartPage = () => {
 
   useEffect(() => {
    
-    fetch("https://fakestoreapi.com/products/1",{
+    fetch("http://localhost:8500/cart",{
     
       method:"GET",
       headers: {

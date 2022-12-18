@@ -6,6 +6,7 @@ const cors = require("cors");
 const { signupRouter } = require("./routes/signup.routes");
 const { loginRouter } = require("./routes/login.routes");
 const { productRouter } = require("./routes/product.routes");
+const { cartRouter } = require("./routes/cart.routes");
 
 app.use(express.json());
 app.use(
@@ -21,7 +22,7 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/products", productRouter);
 app.use("/backend", gadgetsRouter);
-
+app.use("/cart", cartRouter);
 app.listen(process.env.port, async () => {
   try {
     await connection;
@@ -33,3 +34,4 @@ app.listen(process.env.port, async () => {
   }
   console.log(`YOUR PORT IS WORKING PROPERLY`);
 });
+ 
