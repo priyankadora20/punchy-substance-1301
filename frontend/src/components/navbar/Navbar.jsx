@@ -90,11 +90,13 @@ const Navbar = () => {
         <hr />
         <div className={styles.searching}>
           <div>
+            <Link to={"/"}>
             <img
               width="100"
               src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
               alt="gedgetsstop"
-            />
+              />
+              </Link>
           </div>
 
           <span >
@@ -340,11 +342,13 @@ const Navbar = () => {
                 </Flex>
               </MenuList>
             </Menu>
+            <Link to={"/"}>
             <img
               width="90"
               src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
               alt="logo"
-            />
+              />
+              </Link>
             <span className={styles.res_user}>
               <AiOutlineUser />
 
