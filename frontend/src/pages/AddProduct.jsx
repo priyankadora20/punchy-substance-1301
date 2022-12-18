@@ -22,7 +22,7 @@ const AddProduct = () => {
   const handleSubmit = () => {
     const payload = {
       title,
-      url,
+      image: url,
       about,
       price,
       category: "new",
