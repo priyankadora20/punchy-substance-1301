@@ -1,0 +1,11 @@
+.imgimgimg{
+    width:100%;
+}
+@media screen and (max-width: 480px) {
+    .contaa{
+        width:60%;
+        height:200px;
+
+    }
+
+}

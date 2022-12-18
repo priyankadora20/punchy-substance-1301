@@ -10,6 +10,8 @@ import End from "../components/End";
 import OrderSummaryPage from "../components/Cart/OrderSummeryPage";
 import AddProduct from "../pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute";
+import { Newpage } from "../pages/newpage/newpage";
+import Coupons from "../pages/Coupon/couponpage";
 export const AllRoutes = () => {
   return (
     <Routes>
@@ -21,6 +23,8 @@ export const AllRoutes = () => {
       <Route path="/order" element={<OrderSummaryPage />} />
       <Route path="/payment" element={<PaymentPage />} />
       <Route path="/bank" element={<Bank />} />
+      <Route path="/newpage" element={<Newpage />} />
+      <Route path="/coupons" element={<Coupons />} />
       <Route path="/end" element={<End />} />
       <Route
         path="/addproduct"

@@ -1,0 +1,161 @@
+.cardbox{
+    display: grid;
+    grid-template-columns:repeat(4,1fr) ;
+    margin:10px;
+    text-align:center;
+    margin-top: 0px;
+    margin-top: 20px;
+    z-index: -1;
+}
+.newcard{
+    margin:auto;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 10px;
+   font-size: 20px;
+   margin-top: 10px;
+   font-weight: bold;
+   background-color: white;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#recentpoduct{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;   
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.cardbox1{
+    font-size: 70px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; 
+    font-weight: bolder;
+    text-align:center;
+    padding: 35px;
+position: fixed;
+  top: 0;
+  width: 100%;
+    padding: 10px;
+    background-color: white;
+}
+.btn-red-new{
+   padding: 5px;
+   padding-left: 20px;
+   padding-right: 20px;
+   border-radius: 20px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   color: white;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.gapgap{
+    padding: 70px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .cardbox{
+        display: grid;
+        grid-template-columns:repeat(2,1fr) ;
+        margin:10px;
+        text-align:center;
+        margin-top: 0px;
+        margin-top: 20px;
+        z-index: -1;
+    }
+    .newcard{
+        margin:auto;
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 10px;
+       font-size: 20px;
+       margin-top: 10px;
+       font-weight: bold;
+       background-color: white;
+       font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    #recentpoduct{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;   
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .cardbox1{
+        font-size: 70px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; 
+        font-weight: bolder;
+        text-align:center;
+        padding: 35px;
+    position: fixed;
+      top: 0;
+      width: 100%;
+        padding: 10px;
+        background-color: white;
+    }
+    .btn-red-new{
+       padding: 5px;
+       padding-left: 20px;
+       padding-right: 20px;
+       border-radius: 20px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       color: white;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .gapgap{
+        padding: 70px;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+
+    .cardbox{
+        display: grid;
+        grid-template-columns:repeat(1,1fr) ;
+        margin:10px;
+        text-align:center;
+        margin-top: 0px;
+        margin-top: 20px;
+        z-index: -1;
+    }
+    .newcard{
+        margin:auto;
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 10px;
+       font-size: 20px;
+       margin-top: 10px;
+       font-weight: bold;
+       background-color: white;
+       font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    #recentpoduct{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;   
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .cardbox1{
+        font-size: 70px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; 
+        font-weight: bolder;
+        text-align:center;
+        padding: 35px;
+    position: fixed;
+      top: 0;
+      width: 100%;
+        padding: 10px;
+        background-color: white;
+    }
+    .btn-red-new{
+       padding: 5px;
+       padding-left: 20px;
+       padding-right: 20px;
+       border-radius: 20px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       color: white;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .gapgap{
+        padding: 70px;
+        margin-top: 150px;
+    }
+}
