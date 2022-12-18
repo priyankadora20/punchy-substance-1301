@@ -113,10 +113,10 @@ const Bank = () => {
           <label htmlFor="">Enter O.T.P :</label>
           <HStack>
             <PinInput size='lg'>
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
+            <PinInputField isRequired='true'/>
+            <PinInputField isRequired='true'/>
+            <PinInputField isRequired='true'/>
+            <PinInputField isRequired='true'/>
             </PinInput>
           </HStack>
           <Link to={"/end"}>

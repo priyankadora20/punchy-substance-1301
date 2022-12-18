@@ -1,7 +1,9 @@
 import { Box, Text, Button } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import "../styles/deleteItem.css"
 
 const CartItem = (props) => {
 
@@ -15,14 +17,22 @@ const CartItem = (props) => {
 
   },[count,mrp,props])
 
-//  console.log("mrp",mrp);
+//  console.log("prop",props);
+
+ const handleDelete=(id,e)=>{
+   console.log("id",props._id);
+    axios.delete(`http://localhost:8500/cart/deletecart/${id}`)
+    .then((response)=>console.log("Deleted Data",response)).catch((error)=>console.log(error))
+    window.location.reload()
+ }
   return (
     <div>
       <Box display={"flex"}>
         <input type="checkbox" />
         <Box className="cartitem">
           <Box>
-            <img src={props.image} alt="" />
+            {/* {console.log(props.image)} */}
+            <img src={props.image} alt="img" />
           </Box>
           <Box>
             <Text>{props.name}</Text>
@@ -32,7 +42,7 @@ const CartItem = (props) => {
             <Text>{Number(props.price)}</Text>
           </Box>
           <Box display={"flex"}>
-            <Button onClick={() => setCount(prev => prev - 1)} disabled={count === 0}>
+            <Button onClick={() => setCount(prev => prev - 1)} disabled={count === 1}>
               -
             </Button>
             <Button>{count}</Button>
@@ -44,7 +54,7 @@ const CartItem = (props) => {
             <Text>{(mrp).toFixed(2)}</Text>
           </Box>
           <Box>
-            <Text>🗑</Text>
+            <Text className="delete_item" onClick={(e)=>handleDelete(props._id,e)} >Delete</Text>
           </Box>
         </Box>
       </Box>
