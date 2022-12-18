@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import styles from "../styles/navbar.module.css";
 import { BsChevronDown, BsCart3 } from "react-icons/bs";
@@ -7,11 +7,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import SearchPage from "../searchPage/SearchInput";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../redux/suggestionReducer/action";
 import {
-  Box,
+
   Button,
   Flex,
   IconButton,
@@ -23,18 +22,10 @@ import {
 } from "@chakra-ui/react";
 import ShowSearching from "../searchPage/ShowSearching";
 const Navbar = () => {
-  const [query, setQuery] = useState("");
-  const [searchQueryVal,setSearchQueryVal]=useState("")
   const data = useSelector((store) => store.suggestionReducer.suggestion);
 
-
-  console.log("suggvalue", query);
   const dispatch = useDispatch();
 
- 
- useEffect(()=>{
- 
- },[searchQueryVal])
   useEffect(() => {
     if (data.length === 0) {
       dispatch(getData());

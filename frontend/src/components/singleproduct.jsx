@@ -23,6 +23,10 @@ export const SingleProduct=()=>{
     },[setData,productID])
     
     useEffect(()=>{
+
+     getsingledata()
+    },[setData,getsingledata])
+
         setLoading(true)
         window.scrollTo(0, 0);
         getsingledata()
