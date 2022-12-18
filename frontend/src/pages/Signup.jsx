@@ -67,7 +67,7 @@ const Signup = () => {
   return (
     <div>
       <Particle />
-      <Container
+      {/* <Container
         pos={"fixed"}
         top="0px"
         paddingBottom={"20px"}
@@ -83,7 +83,7 @@ const Signup = () => {
         <Link to={"/"}>
           <img src="/gadgetstop.jpeg" alt="" />
         </Link>
-      </Container>
+      </Container> */}
       <Container
         bg={"white"}
         maxW={{ lg: "30%", md: "50%", sm: "70%", base: "90%" }}

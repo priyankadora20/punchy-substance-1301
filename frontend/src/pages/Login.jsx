@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div>
       <Particle />
-      <Container
+      {/* <Container
         zIndex={10}
         pos={"fixed"}
         top="0px"
@@ -56,7 +56,7 @@ const Login = () => {
         <Link to={"/"}>
           <img src="/gadgetstop.jpeg" alt="" />
         </Link>
-      </Container>
+      </Container> */}
       <Container
         bg={"white"}
         maxW={{ lg: "30%", md: "50%", sm: "70%", base: "90%" }}
