@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react"
 import React from "react"
-import {HashLink as Lin} from "react-router-hash-link"
 import {FaHome,FaArrowUp,FaCartArrowDown,FaEye} from "react-icons/fa"
 import { Link } from "react-router-dom"
 
