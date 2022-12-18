@@ -8,9 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useDispatch } from "react-redux";
-
 import { Particle } from "../components/particle";
-import { Link } from "react-router-dom";
 import { addData } from "../redux/adminReducer/action";
 const AddProduct = () => {
   const [title, setTitle] = React.useState("");
