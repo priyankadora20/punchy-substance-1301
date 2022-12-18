@@ -64,13 +64,13 @@ export const Newforyou = () => {
 
     return (
         <Box  w='80%' m='auto' mt='50px' bgColor='#F1F6FD' pb='30px'>
-            <Box display='flex' alignItems='center' gap='20px' w='95%' m='auto'>
+            <Box display='flex' alignItems='center' justifyContent='space-between' w='95%' m='auto'>
                 <Heading >New For You</Heading>
-                <Link><Text color='blue'>See More</Text></Link>
+                <Link to='/product'><Text color='blue'>See More</Text></Link>
             </Box>
             <Box display='flex' w='95%' m='auto' h='300px' mt='20px' gap='20px' >
                 <Box w={{base:'40%',md:'33%',lg:"24%"}} h='100%'>
-                    <Image src='https://img.gkbcdn.com/bn/2212/LOKMATTIMEPRO-638d8d152b40c93c74f9ec1f._p1_.jpg' h='100%' w='100%'/>
+                    <Image src='https://img.gkbcdn.com/bn/2212/300x380-638d8ff32b40c93c747240ee._p1_.jpg' h='100%' w='100%'/>
                 </Box>
                 <Box w={{base:'48%',md:'66%',lg:"72%"}} h='100%'>
                     <Slider {...settings}>

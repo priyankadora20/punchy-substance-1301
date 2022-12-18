@@ -1,10 +1,11 @@
-import { Box, Heading, Image, Text } from "@chakra-ui/react"
+import { Box,Image } from "@chakra-ui/react"
 import axios from "axios"
 import React from "react"
 import { Link } from "react-router-dom"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./popularbrands.css"
+import "./styles/popularbrands.css"
+import ClockLoader from "react-spinners/ClockLoader";
 
 
 export const Popularbrands = () => {
@@ -13,6 +14,7 @@ export const Popularbrands = () => {
     const [second,setSecond]=React.useState([])
     const [third,setThird]=React.useState([])
     const [fourth,setFourth]=React.useState([])
+    const [loading,setLoading]=React.useState(false)
 
     
     function getMultipleRandom(topran, num) {
@@ -22,8 +24,16 @@ export const Popularbrands = () => {
     }
 
     React.useEffect(() => {
+        setLoading(true)
         axios.get("http://localhost:8500/products")
-            .then((res) => setTopran(res.data))
+            .then((res) => {
+                setLoading(false)
+                setTopran(res.data)
+            })
+            .catch(err=>{
+                setLoading(false)
+                console.log(err)
+            })
     }, [])
 
     React.useEffect(()=>{
@@ -35,10 +45,21 @@ export const Popularbrands = () => {
 
 
     return (
-        <Box mt='50px' w='80%' m='auto' bgColor='#F1F6FD' pb='30px'>
+        <>
+        {
+           loading&&<Box width='100%' h='100vh' display='flex' alignItems='center' justifyContent='center'><ClockLoader
+           color={'white'}
+           loading={loading}
+           size={150}
+           aria-label="Loading Spinner"
+           data-testid="loader"
+         /></Box>
+        }
+        {
+            !loading&&<Box mt='50px' w='80%' m='auto' bgColor='#F1F6FD' pb='30px' >
             <Box display='flex' w='95%' m='auto' h='300px' mt='20px' gap='20px' p='20px'>
                 <Box w={{base:'33%',md:'33%',lg:"24%"}} h='100%'>
-                    <Image src='https://img.gkbcdn.com/bn/2212/LOKMATTIMEPRO-638d8d152b40c93c74f9ec1f._p1_.jpg' h='100%' w='100%'/>
+                    <Link to='/product'><Image src='https://img.gkbcdn.com/bn/2212/LOKMATTIMEPRO-638d8d152b40c93c74f9ec1f._p1_.jpg' h='100%' w='100%'/></Link>
                 </Box>
                 <Box w={{base:'48%',md:'66%',lg:"76%"}}  h='100%'  justifyContent='space-between' className="firsts" >
                         {
@@ -86,5 +107,7 @@ export const Popularbrands = () => {
                 </Box>
             </Box>
         </Box>
+        }
+        </>
     )
 }
