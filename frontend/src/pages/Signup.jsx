@@ -73,14 +73,16 @@ const Signup = () => {
         paddingBottom={"20px"}
         paddingTop={"20px"}
         height={"auto"}
-        bg="#2c8afb"
+        bg="#df1919"
         maxW={"100%"}
         justifyContent="center"
         display={"flex"}
         alignItems="center"
         zIndex={10}
       >
-        <img src="/gadgetstop.jpeg" alt="" />
+        <Link to={"/"}>
+          <img src="/gadgetstop.jpeg" alt="" />
+        </Link>
       </Container>
       <Container
         bg={"white"}

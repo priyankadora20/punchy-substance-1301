@@ -23,7 +23,7 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth, isLoading } = useSelector((state) => state.authreducer);
+  const { isAuth } = useSelector((state) => state.authreducer);
   const handleClick = () => setShow(!show);
   const handleSubmit = () => {
     const payload = {
@@ -35,7 +35,7 @@ const Login = () => {
     setPassword("");
   };
   if (isAuth) {
-    navigate("/landing");
+    navigate("/");
   }
   return (
     <div>
@@ -47,13 +47,15 @@ const Login = () => {
         paddingBottom={"20px"}
         paddingTop={"20px"}
         height={"auto"}
-        bg="#2c8afb"
+        bg="#df1919"
         maxW={"100%"}
         justifyContent="center"
         display={"flex"}
         alignItems="center"
       >
-        <img src="/gadgetstop.jpeg" alt="" />
+        <Link to={"/"}>
+          <img src="/gadgetstop.jpeg" alt="" />
+        </Link>
       </Container>
       <Container
         bg={"white"}

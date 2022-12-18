@@ -41,7 +41,7 @@ export const loginData = (payload) => (dispatch) => {
   return axios
     .post("http://localhost:8500/login", payload)
     .then((res) => {
-      return dispatch(loginSuccess(res.data.token));
+      return dispatch(loginSuccess(res.data));
     })
     .catch((err) => {
       dispatch(loginFailure());

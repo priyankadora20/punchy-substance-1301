@@ -1,0 +1,179 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  #shipping_address {
+    /* border: 1px solid; */
+    width: 80%;
+    margin: auto;
+    margin-top: 3%;
+  }
+  
+  .ship_form {
+    border: 1px solid silver;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    padding: 1% 3% 1% 3%;
+  }
+  
+  .ship_form > div label {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  .ship_form div {
+    /* border: 1px solid silver; */
+    /* display: flex; */
+    justify-content: space-evenly;
+    padding: 10px 0px 10px 0px;
+    text-align: right;
+    width: 55%;
+  }
+  
+  .ship_form input,
+  .ship_form select {
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 10px;
+    width: 65%;
+  }
+  
+  .ship_form span {
+    color: red;
+  }
+  
+  .ship_form > div:nth-child(10) {
+    width: 40%;
+    align-items: center;
+    display: flex;
+    margin: 0;
+    /* justify-content: space-around; */
+  }
+  
+  .ship_form > div:nth-child(10) input {
+    height: 15px;
+    /* margin-left: -40px; */
+  }
+  
+  .ship_form > div:nth-child(11) {
+    /* padding: 15px 30px; */
+    padding-right: 5%;
+  }
+  
+  
+  
+  .ship_form > div:nth-child(11) input:nth-child(1) {
+    background-image: linear-gradient(to bottom, #318ffb, #06f);
+    font-size: 20px;
+    color: white;
+  }
+  
+  .ship_form > div:nth-child(11) input:nth-child(2) {
+    border: 1px solid;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .coupon_sec {
+    border: 1px solid silver;
+    padding: 4%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .coupon_sec > div:nth-child(1) {
+    /* border: 1px solid green; */
+    width: 60%;
+  }
+  .coupon_sec > div:nth-child(2) {
+    /* border: 1px solid green; */
+    width: 25%;
+  }
+  
+  .coupon_sec input {
+    width: 100%;
+    border: 1px solid silver;
+    padding: 6px;
+    border-radius: 5px;
+  }
+  
+  .coupon_sec div:nth-child(1) > div {
+    display: flex;
+    /* border: 1px solid blueviolet; */
+    justify-content: space-between;
+    width: 90%;
+  }
+  
+  .coupon_sec div:nth-child(1) > div button {
+    background-image: linear-gradient(to bottom, #318ffb, #06f);
+    padding: 5px 20px;
+    color: white;
+  }
+  
+  .coupon_sec div:nth-child(2) > div:nth-child(1),
+  .coupon_sec div:nth-child(2) > div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    align-items: center;
+    padding-right: 10px;
+  }
+  
+  .coupon_sec div:nth-child(2) > div:nth-child(1) span,
+  .coupon_sec div:nth-child(2) > div:nth-child(2) span {
+    color: gray;
+  }
+  
+  .coupon_sec div:nth-child(2) > div:nth-child(1) p,
+  .coupon_sec div:nth-child(2) > div:nth-child(2) p {
+    font-size: 20px;
+    /* color: gray; */
+  }
+  
+  .coupon_sec div:nth-child(2) > div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 10px 25px 10px;
+  }
+  
+  .coupon_sec div:nth-child(2) > div:nth-child(3) span {
+    color: gray;
+  }
+  
+  .coupon_sec div:nth-child(2) > div:nth-child(3) p {
+    font-size: 25px;
+    color: orangered;
+  }
+  
+  .coupon_sec div:nth-child(2) button {
+    display: block;
+    margin: auto;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #318ffb, #06f);
+    color: white;
+  }
+  
+  .ship_del{
+    padding: 1% 3%;
+    border-radius:5px;
+    /* border:1px solid silver; */
+    display:flex;
+    justify-content:space-between;
+  }
+  
+  .extra_chg{
+    display: flex;
+    padding: 2% 4%;
+    /* border: 1px solid silver; */
+    align-items: center;
+    justify-content:space-between;
+  
+  }
+  
+  

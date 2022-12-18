@@ -19,10 +19,14 @@
     position: absolute;
     border: 1px solid transparent;
     border-radius: 10px;
-    background-color: rgba(35, 35, 35, 0.667);
+    background-color: rgba(35, 35, 35, 0.8);
     padding: 2%;
     color: white;
-    top: 47%;
-    left:5%
+    top: 30%;
+    left:60%
    
+}
+.title
+{
+    text-align: center;
 }
