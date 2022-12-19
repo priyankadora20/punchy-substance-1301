@@ -13,6 +13,7 @@ import OrderSummaryPage from "../components/Cart/OrderSummeryPage";
 import AddProduct from "../pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute";
 import LoginPrivateRoute from "../components/LoginPrivateRoute";
+import {NotFound} from "../components/notfound"
 
 export const AllRoutes = () => {
   return (
@@ -63,6 +64,7 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
+      <Route path="*" element={<NotFound/>}/>
     </Routes>
   );
 };
