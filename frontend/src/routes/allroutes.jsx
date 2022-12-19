@@ -4,7 +4,6 @@ import { AllProduct } from "../pages/allproduct";
 import { SingleProduct } from "../components/singleproduct";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
-
 import CartPage from "../components/Cart/cart";
 import PaymentPage from "../components/Payment&Otp/PaymentPage";
 import Bank from "../components/Payment&Otp/Blank";
@@ -13,6 +12,8 @@ import OrderSummaryPage from "../components/Cart/OrderSummeryPage";
 import AddProduct from "../pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute";
 import LoginPrivateRoute from "../components/LoginPrivateRoute";
+import Coupons from "../pages/Coupon/couponpage";
+import Newpage from "../pages/newpage/newpage";
 
 export const AllRoutes = () => {
   return (
