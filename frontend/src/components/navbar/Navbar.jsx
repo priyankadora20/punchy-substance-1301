@@ -9,7 +9,7 @@ import { FiSearch } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../redux/suggestionReducer/action";
-import { Particle } from "../particle";
+
 import {
 
   Button,
@@ -23,6 +23,7 @@ import {
 } from "@chakra-ui/react";
 import ShowSearching from "../searchPage/ShowSearching";
 import axios from "axios";
+import Particles from "react-tsparticles";
 const Navbar = () => {
   const data = useSelector((store) => store.suggestionReducer.suggestion);
   const isAdmin=useSelector((e)=>e.authreducer.isAdmin)
@@ -45,9 +46,7 @@ const navigate=useNavigate()
   
   return (
     <> 
-     
       <NavPageWraper>
-      <Particle/>
         <div className={styles.list_container}>
           <li className={styles.downarr}>
             <span>
@@ -124,17 +123,17 @@ const navigate=useNavigate()
                 }}
               >
                 <div style={{fontSize:"15px"}}>Country Name</div>
-                <select style={{ border: "none" }}>
+                <select style={{ border: "none"}}>
                   <option value="india"></option>
                   <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
+                  <option value="india">US</option>
+                  <option value="india">Russia</option>
+                  <option value="india">Japan</option>
+                  <option value="india">China</option>
+                  <option value="india">UK</option>
+                  <option value="india">Sri Lanka</option>
+                  <option value="india">Nepal</option>
+                  <option value="india">Pakistan</option>
                 </select>
               </div>
               <p>Currency</p>
@@ -151,15 +150,14 @@ const navigate=useNavigate()
                 <div style={{fontSize:"15px"}}>INR Rs</div>
                 <select style={{ border: "none" }}>
                   <option value="india"></option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
-                  <option value="india">India</option>
+                  <option value="india">INR</option>
+                  <option value="india">USD</option>
+                  <option value="india">KD</option>
+                  <option value="india">Riyal</option>
+                  <option value="india">Taka</option>
+                  <option value="india">USD</option>
+                  <option value="india">INR</option>
+                  <option value="india">USD</option>
                 </select>
               </div>
               <button

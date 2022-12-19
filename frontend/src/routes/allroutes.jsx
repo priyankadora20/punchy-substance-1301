@@ -16,7 +16,6 @@ import {NotFound} from "../components/notfound"
 import Coupons from "../pages/Coupon/couponpage";
 import Newpage from "../pages/newpage/newpage";
 
-
 export const AllRoutes = () => {
   return (
     <Routes>
@@ -50,8 +49,6 @@ export const AllRoutes = () => {
         }
       />
       <Route path="/bank" element={<Bank />} />
-      <Route path="/newpage" element={<Newpage />} />
-      <Route path="/coupons" element={<Coupons />} />
       <Route path="/end" element={<End />} />
 
       <Route
