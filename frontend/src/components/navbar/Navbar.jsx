@@ -6,9 +6,10 @@ import { CiMobile2 } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../redux/suggestionReducer/action";
+import { Particle } from "../particle";
 import {
 
   Button,
@@ -27,7 +28,7 @@ const Navbar = () => {
   const isAdmin=useSelector((e)=>e.authreducer.isAdmin)
   const [cartLen,setCartLen]=useState(0)
   const dispatch = useDispatch();
-
+const navigate=useNavigate()
   useEffect(() => {
     if (data.length === 0) {
       dispatch(getData());
@@ -43,8 +44,10 @@ const Navbar = () => {
   },[cartLen])
   
   return (
-    <>
+    <> 
+     
       <NavPageWraper>
+      <Particle/>
         <div className={styles.list_container}>
           <li className={styles.downarr}>
             <span>
@@ -87,7 +90,9 @@ const Navbar = () => {
             </span>
           </li>
         </div>
+     
         <hr />
+
         <div className={styles.searching}>
           <div>
             <Link to={"/"}>
@@ -188,6 +193,7 @@ const Navbar = () => {
                   gap: "10px",
                 }}
               >
+                
                 <button
                   style={{
                     backgroundColor: "#2c8afb",
@@ -197,11 +203,12 @@ const Navbar = () => {
                     borderRadius: "5px",
                     fontSize: "22px",
                   }}
+                  onClick={()=>navigate("/signup")}
                 >
-                    <Link to={"/login"}>
                     Join
-                    </Link>
                 </button>
+                    
+                
                 <button
                   style={{
                     backgroundColor: "#9ed2fa",
@@ -211,11 +218,11 @@ const Navbar = () => {
                     borderRadius: "5px",
                     fontSize: "22px",
                   }}
+                  onClick={()=>navigate("/login")}
                 >
-                  <Link to={"/signup"}>
                     Sign In
-                    </Link>
                 </button>
+                    
               </div>
               <div
                 style={{
@@ -251,7 +258,7 @@ const Navbar = () => {
             {/* </div> */}
           </div>
           <div className={styles.cart}>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex" }} onClick={()=>navigate("/cart")}>
               {/* <span> */}
               <BsCart3 />
               {/* </span> */}
@@ -374,10 +381,9 @@ const Navbar = () => {
                       width: "46%",
                       borderRadius: "5px",
                     }}
+                    onClick={()=>navigate("/login")}
                   >
-                     <Link to={"/login"}>
                     Login
-                    </Link>
                   </button>
                   <button
                     style={{
@@ -389,11 +395,11 @@ const Navbar = () => {
                       width: "46%",
                       borderRadius: "5px",
                     }}
+                    onClick={()=>navigate("/signup")}
                   >
-                    <Link to={"/signup"}>
                     Signup
-                    </Link>
                   </button>
+                    
                 </div>
                 <div
                   style={{
@@ -438,6 +444,7 @@ const Navbar = () => {
        
         </div>
       </NavPageWraper>
+
     </>
   );
 };
@@ -447,7 +454,7 @@ const NavPageWraper = styled.div`
   margin: auto;
   height: auto;
   padding-bottom: 1px;
-  background-color: #2c8afb;
+  background-color: #c2171d;
   color: white;
 
   @media screen and (max-width: 420px) {

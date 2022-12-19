@@ -1,0 +1,76 @@
+.coup{
+    display: grid;
+    grid-template-columns:repeat(3,1fr) ;
+    margin:10px;
+    
+    text-align: right;
+}
+.coupcard{
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 10px;
+   
+}
+#btncoup{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding:10px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    border: white;
+    
+}
+@media screen and (max-width: 768px) {
+    .coup{
+        display: grid;
+        grid-template-columns:repeat(2,1fr) ;
+        margin:10px;
+        
+        text-align: right;
+    }
+    .coupcard{
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 10px;
+       
+    }
+    #btncoup{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        padding:10px;
+        border-radius: 10px;
+        background-color: red;
+        color: white;
+        font-weight: bolder;
+        border: white;
+        
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .coup{
+        display: grid;
+        grid-template-columns:repeat(1,1fr) ;
+        margin:10px;
+        
+        text-align: right;
+    }
+    .coupcard{
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 10px;
+       
+    }
+    #btncoup{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        padding:10px;
+        border-radius: 10px;
+        background-color: red;
+        color: white;
+        font-weight: bolder;
+        border: white;
+        
+    }
+}

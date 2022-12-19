@@ -4,7 +4,6 @@ import { AllProduct } from "../pages/allproduct";
 import { SingleProduct } from "../components/singleproduct";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
-
 import CartPage from "../components/Cart/cart";
 import PaymentPage from "../components/Payment&Otp/PaymentPage";
 import Bank from "../components/Payment&Otp/Blank";
@@ -14,6 +13,9 @@ import AddProduct from "../pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute";
 import LoginPrivateRoute from "../components/LoginPrivateRoute";
 import {NotFound} from "../components/notfound"
+import Coupons from "../pages/Coupon/couponpage";
+import Newpage from "../pages/newpage/newpage";
+
 
 export const AllRoutes = () => {
   return (
@@ -47,15 +49,11 @@ export const AllRoutes = () => {
           </LoginPrivateRoute>
         }
       />
-      <Route
-        path="/bank"
-        element={
-          <LoginPrivateRoute>
-            <Bank />
-          </LoginPrivateRoute>
-        }
-      />
+      <Route path="/bank" element={<Bank />} />
+      <Route path="/newpage" element={<Newpage />} />
+      <Route path="/coupons" element={<Coupons />} />
       <Route path="/end" element={<End />} />
+
       <Route
         path="/addproduct"
         element={

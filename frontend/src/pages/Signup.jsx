@@ -67,23 +67,6 @@ const Signup = () => {
   return (
     <div>
       <Particle />
-      {/* <Container
-        pos={"fixed"}
-        top="0px"
-        paddingBottom={"20px"}
-        paddingTop={"20px"}
-        height={"auto"}
-        bg="#df1919"
-        maxW={"100%"}
-        justifyContent="center"
-        display={"flex"}
-        alignItems="center"
-        zIndex={10}
-      >
-        <Link to={"/"}>
-          <img src="/gadgetstop.jpeg" alt="" />
-        </Link>
-      </Container> */}
       <Container
         bg={"white"}
         maxW={{ lg: "30%", md: "50%", sm: "70%", base: "90%" }}
