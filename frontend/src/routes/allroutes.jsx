@@ -23,14 +23,35 @@ export const AllRoutes = () => {
       <Route path="/product/:productID" element={<SingleProduct />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="/order" element={<OrderSummaryPage />} />
-      <Route path="/payment" element={<PaymentPage />} />
+      <Route
+        path="/cart"
+        element={
+          <LoginPrivateRoute>
+            <CartPage />
+          </LoginPrivateRoute>
+        }
+      />
+      <Route
+        path="/order"
+        element={
+          <LoginPrivateRoute>
+            <OrderSummaryPage />
+          </LoginPrivateRoute>
+        }
+      />
+      <Route
+        path="/payment"
+        element={
+          <LoginPrivateRoute>
+            <PaymentPage />
+          </LoginPrivateRoute>
+        }
+      />
       <Route path="/bank" element={<Bank />} />
       <Route path="/newpage" element={<Newpage />} />
       <Route path="/coupons" element={<Coupons />} />
       <Route path="/end" element={<End />} />
-     
+
       <Route
         path="/addproduct"
         element={
