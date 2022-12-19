@@ -41,23 +41,6 @@ const Login = () => {
     <div>
       <Particle />
       <Container
-        zIndex={10}
-        pos={"fixed"}
-        top="0px"
-        paddingBottom={"20px"}
-        paddingTop={"20px"}
-        height={"auto"}
-        bg="#df1919"
-        maxW={"100%"}
-        justifyContent="center"
-        display={"flex"}
-        alignItems="center"
-      >
-        <Link to={"/"}>
-          <img src="/gadgetstop.jpeg" alt="" />
-        </Link>
-      </Container>
-      <Container
         bg={"white"}
         maxW={{ lg: "30%", md: "50%", sm: "70%", base: "90%" }}
         marginTop={"200px"}

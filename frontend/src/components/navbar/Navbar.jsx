@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import styles from "../styles/navbar.module.css";
 import { BsChevronDown, BsCart3 } from "react-icons/bs";
@@ -6,12 +6,12 @@ import { CiMobile2 } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import SearchPage from "../searchPage/SearchInput";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../redux/suggestionReducer/action";
+import { Particle } from "../particle";
 import {
-  Box,
+
   Button,
   Flex,
   IconButton,
@@ -22,29 +22,32 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import ShowSearching from "../searchPage/ShowSearching";
+import axios from "axios";
 const Navbar = () => {
-  const [query, setQuery] = useState("");
-  const [searchQueryVal,setSearchQueryVal]=useState("")
   const data = useSelector((store) => store.suggestionReducer.suggestion);
-
-
-  console.log("suggvalue", query);
+  const isAdmin=useSelector((e)=>e.authreducer.isAdmin)
+  const [cartLen,setCartLen]=useState(0)
   const dispatch = useDispatch();
-
- 
- useEffect(()=>{
- 
- },[searchQueryVal])
+const navigate=useNavigate()
   useEffect(() => {
     if (data.length === 0) {
       dispatch(getData());
     }
   }, [data.length, dispatch]);
 
+  useEffect(()=>{
+    axios.get("http://localhost:8500/cart").then((r)=>{
+      setCartLen(r.data.length)
+    }).catch((e)=>{
+      console.log(e)
+    })
+  },[cartLen])
   
   return (
-    <>
+    <> 
+     
       <NavPageWraper>
+      <Particle/>
         <div className={styles.list_container}>
           <li className={styles.downarr}>
             <span>
@@ -87,14 +90,18 @@ const Navbar = () => {
             </span>
           </li>
         </div>
+     
         <hr />
+
         <div className={styles.searching}>
           <div>
+            <Link to={"/"}>
             <img
               width="100"
               src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
               alt="gedgetsstop"
-            />
+              />
+              </Link>
           </div>
 
           <span >
@@ -186,6 +193,7 @@ const Navbar = () => {
                   gap: "10px",
                 }}
               >
+                
                 <button
                   style={{
                     backgroundColor: "#2c8afb",
@@ -195,9 +203,12 @@ const Navbar = () => {
                     borderRadius: "5px",
                     fontSize: "22px",
                   }}
+                  onClick={()=>navigate("/signup")}
                 >
-                  Join
+                    Join
                 </button>
+                    
+                
                 <button
                   style={{
                     backgroundColor: "#9ed2fa",
@@ -207,9 +218,11 @@ const Navbar = () => {
                     borderRadius: "5px",
                     fontSize: "22px",
                   }}
+                  onClick={()=>navigate("/login")}
                 >
-                  Sign In
+                    Sign In
                 </button>
+                    
               </div>
               <div
                 style={{
@@ -245,7 +258,7 @@ const Navbar = () => {
             {/* </div> */}
           </div>
           <div className={styles.cart}>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex" }} onClick={()=>navigate("/cart")}>
               {/* <span> */}
               <BsCart3 />
               {/* </span> */}
@@ -259,7 +272,7 @@ const Navbar = () => {
                   justifyContent: "center",
                 }}
               >
-                5
+                {cartLen}
               </sup>
             </div>
           </div>
@@ -286,27 +299,27 @@ const Navbar = () => {
               <li>Wearable Devices</li>
             </ul>
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={`/product`} className={styles.li}>
             New
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Bestselling
           </Link>
 
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Brand
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Clearance
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Deals
           </Link>
-          <Link to={"#"} className={styles.li}>
+          <Link to={"/product"} className={styles.li}>
             Coupons
           </Link>
-          <Link to={"#"} className={styles.li}>
-            App only
+          <Link to={"/addproduct"} className={styles.li}>
+            {isAdmin?"Add Product":""}
           </Link>
         </ul>
 
@@ -329,18 +342,20 @@ const Navbar = () => {
                 <MenuItem>Clearance</MenuItem>
                 <MenuItem>Deals</MenuItem>
                 <MenuItem>Coupons</MenuItem>
-                <MenuItem>App only</MenuItem>
+                <MenuItem>{isAdmin?"Add Product":""}</MenuItem>
                 <Flex >
                   <Input></Input>
                   <Button>Subscribe</Button>
                 </Flex>
               </MenuList>
             </Menu>
+            <Link to={"/"}>
             <img
               width="90"
               src={process.env.PUBLIC_URL + "/gadgetstop.jpeg"}
               alt="logo"
-            />
+              />
+              </Link>
             <span className={styles.res_user}>
               <AiOutlineUser />
 
@@ -366,6 +381,7 @@ const Navbar = () => {
                       width: "46%",
                       borderRadius: "5px",
                     }}
+                    onClick={()=>navigate("/login")}
                   >
                     Login
                   </button>
@@ -379,9 +395,11 @@ const Navbar = () => {
                       width: "46%",
                       borderRadius: "5px",
                     }}
+                    onClick={()=>navigate("/signup")}
                   >
-                    Sign In
+                    Signup
                   </button>
+                    
                 </div>
                 <div
                   style={{
@@ -416,7 +434,7 @@ const Navbar = () => {
                   justifyContent: "center",
                 }}
               >
-                5
+                {cartLen}
               </sup>
             </span>
           </div>
@@ -426,6 +444,7 @@ const Navbar = () => {
        
         </div>
       </NavPageWraper>
+
     </>
   );
 };
@@ -435,7 +454,7 @@ const NavPageWraper = styled.div`
   margin: auto;
   height: auto;
   padding-bottom: 1px;
-  background-color: #2c8afb;
+  background-color: #c2171d;
   color: white;
 
   @media screen and (max-width: 420px) {

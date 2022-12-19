@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const gadgetsSchema = mongoose.Schema({
-  image1: {
+  image: {
     type: String,
   },
   title: {

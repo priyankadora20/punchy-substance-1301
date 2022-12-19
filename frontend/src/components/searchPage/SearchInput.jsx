@@ -5,22 +5,22 @@ import styled from "styled-components";
 import { useThrottle } from "use-throttle";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const SearchPage = ({ setQuery, suggestion, setSuggValue }) => {
+const SearchPage = ({ setQuery, suggestion }) => {
   const [search, setSearch] = useState("");
   const [activeOption, setActiveOption] = useState(0);
-  const [filtered, setFiltered] = useState([]);
+
   const scrollRef = useRef();
   const handleChange = (e) => {
     setSearch(e.target.value);
-    axios
-      .get(`http://localhost:8500/products?q=${search}`)
-      .then((r) => {
-        console.log("from api", r.data);
-        setFiltered(r.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    // axios
+    //   .get(`http://localhost:8500/products?q=${search}`)
+    //   .then((r) => {
+    //     console.log("from api", r.data);
+    //     setFiltered(r.data);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
   };
 
   const handleClickSearchWithQ = (e) => {
@@ -30,7 +30,7 @@ const SearchPage = ({ setQuery, suggestion, setSuggValue }) => {
     //     }
     //     axios.get(`http://localhost:8500/products?q=${e}`).then((r)=>{
     //       console.log("from api",r.data)
-    //       setFiltered(r.data)
+    //       setSuggestion(r.data)
     //     }).catch((e)=>{
     //       console.log(e)
     //     })
@@ -93,40 +93,26 @@ const SearchPage = ({ setQuery, suggestion, setSuggValue }) => {
         <SuggestionBox active={activeOption} limit={5} ref={scrollRef}>
           {suggestion?.map((e, i) => (
             <div
+              
               key={i}
               onMouseOver={() => {
                 setActiveOption(i + 1);
               }}
               onClick={() => {
-                handleClickSearchWithQ(e);
-                console.log("after enter", e);
+                handleClickSearchWithQ(e.brand);
+                console.log("after enter", e.brand);
               }}
             >
-              <Link
-                to={`/product/${e._id}`}
-                
-                onMouseOver={() => {
-                  setActiveOption(i + 1);
-                }}
-              >
+                <Link
+                  to={`/product/${e._id}`}
+                  >
                 {e.brand}
               </Link>
             </div>
           ))}
         </SuggestionBox>
 
-        {/* <SearchedDataWraper>
-          {filtered.length>0&&filtered.map((e)=>(
-            <Link to={`/landing/${e._id}`}>
-            <div key={e._id} style={{width:"200px",height:"200px"}}>
-              <img src={e.image} alt={e.title} />
-              <div>{e.title.split(" ")[0]}</div>
-              <div>{e.category}</div>
-              <div>{e.brand}</div>
-            </div>
-            </Link>
-              ))}
-        </SearchedDataWraper> */}
+   
       </span>
     </>
   );
@@ -170,19 +156,5 @@ const SuggestionBox = styled.div`
   }
 
 `;
-const SearchedDataWraper = styled.div`
-  width: 500px;
-  display: flex;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  justify-content: center;
-  gap: 1rem;
-  margin: auto;
-  flex-wrap: wrap;
-  position: absolute;
-  background-color: #ffffff75;
-  z-index: 990;
-  max-height: 100vh;
-  overflow: scroll;
-  color: black;
-`;
+
 export default SearchPage;

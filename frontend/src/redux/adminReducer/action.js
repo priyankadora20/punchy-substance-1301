@@ -37,6 +37,7 @@ export const postFailure = () => {
 };
 
 export const adminData = () => (dispatch) => {
+  
   dispatch(getRequest());
   return axios
     .get("http://localhost:8500/backend")
@@ -48,6 +49,7 @@ export const adminData = () => (dispatch) => {
       dispatch(getFailure());
     });
 };
+
 export const addData = (payload) => (dispatch) => {
   dispatch(postRequest());
   return axios
