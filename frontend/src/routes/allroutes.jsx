@@ -12,9 +12,9 @@ import OrderSummaryPage from "../components/Cart/OrderSummeryPage";
 import AddProduct from "../pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute";
 import LoginPrivateRoute from "../components/LoginPrivateRoute";
-import {NotFound} from "../components/notfound"
 import Coupons from "../pages/Coupon/couponpage";
-import Newpage from "../pages/newpage/newpage";
+import {Newpage} from "../pages/newpage/newpage";
+import {NotFound} from "../components/notfound";
 
 export const AllRoutes = () => {
   return (
@@ -24,6 +24,7 @@ export const AllRoutes = () => {
       <Route path="/product/:productID" element={<SingleProduct />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+    
       <Route
         path="/cart"
         element={
@@ -49,8 +50,11 @@ export const AllRoutes = () => {
         }
       />
       <Route path="/bank" element={<Bank />} />
+      <Route path="/newarrival" element={<Newpage />} />
+      <Route path="/coupons" element={<Coupons />} />
       <Route path="/end" element={<End />} />
-
+    
+      <Route path="*" element={<NotFound />} />
       <Route
         path="/addproduct"
         element={
@@ -59,7 +63,6 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="*" element={<NotFound/>}/>
     </Routes>
   );
 };
