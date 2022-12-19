@@ -8,8 +8,7 @@ function App() {
       <Navbar/>
       <AllRoutes/>
       <Footer/>
-    </div>
-  );
+   )
 }
 
 export default App;
