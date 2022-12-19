@@ -36,7 +36,7 @@ const navigate=useNavigate()
   }, [data.length, dispatch]);
 
   useEffect(()=>{
-    axios.get("http://localhost:8500/cart").then((r)=>{
+    axios.get("https://wild-tan-puffer-veil.cyclic.app/cart").then((r)=>{
       setCartLen(r.data.length)
     }).catch((e)=>{
       console.log(e)

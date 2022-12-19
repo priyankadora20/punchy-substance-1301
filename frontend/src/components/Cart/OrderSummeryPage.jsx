@@ -47,7 +47,7 @@ const OrderSummaryPage = () => {
 
   useEffect(() => {
    
-    fetch("http://localhost:8500/cart",{
+    fetch("https://wild-tan-puffer-veil.cyclic.app/cart",{
     
       method:"GET",
       headers: {

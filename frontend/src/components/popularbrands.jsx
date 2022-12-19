@@ -25,7 +25,7 @@ export const Popularbrands = () => {
 
     React.useEffect(() => {
         setLoading(true)
-        axios.get("http://localhost:8500/products")
+        axios.get("https://wild-tan-puffer-veil.cyclic.app/products")
             .then((res) => {
                 setLoading(false)
                 setTopran(res.data)

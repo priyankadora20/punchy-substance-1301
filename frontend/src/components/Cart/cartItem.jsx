@@ -21,7 +21,7 @@ const CartItem = (props) => {
 
  const handleDelete=(id,e)=>{
    console.log("id",props._id);
-    axios.delete(`http://localhost:8500/cart/deletecart/${id}`)
+    axios.delete(`https://wild-tan-puffer-veil.cyclic.app/cart/deletecart/${id}`)
     .then((response)=>console.log("Deleted Data",response)).catch((error)=>console.log(error))
     window.location.reload()
  }

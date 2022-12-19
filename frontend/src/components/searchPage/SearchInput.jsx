@@ -13,7 +13,7 @@ const SearchPage = ({ setQuery, suggestion }) => {
   const handleChange = (e) => {
     setSearch(e.target.value);
     // axios
-    //   .get(`http://localhost:8500/products?q=${search}`)
+    //   .get(`https://wild-tan-puffer-veil.cyclic.app/products?q=${search}`)
     //   .then((r) => {
     //     console.log("from api", r.data);
     //     setFiltered(r.data);
@@ -28,7 +28,7 @@ const SearchPage = ({ setQuery, suggestion }) => {
     //     if(search===""){
     //       setFiltered([])
     //     }
-    //     axios.get(`http://localhost:8500/products?q=${e}`).then((r)=>{
+    //     axios.get(`https://wild-tan-puffer-veil.cyclic.app/products?q=${e}`).then((r)=>{
     //       console.log("from api",r.data)
     //       setSuggestion(r.data)
     //     }).catch((e)=>{

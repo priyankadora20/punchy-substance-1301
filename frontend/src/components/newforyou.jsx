@@ -57,7 +57,7 @@ export const Newforyou = () => {
 
 
     React.useEffect(() => {
-        axios.get("http://localhost:8500/products")
+        axios.get("https://wild-tan-puffer-veil.cyclic.app/products")
             .then((res) => setTopran(res.data))
     }, [])
 

@@ -17,7 +17,7 @@ export const SingleProduct = () => {
     const { isAuth } = useSelector(e => e.authreducer)
 
     const getsingledata = useCallback(() => {
-        return axios.get(`http://localhost:8500/products/${productID}`)
+        return axios.get(`https://wild-tan-puffer-veil.cyclic.app/products/${productID}`)
             .then((res) => {
                 setLoading(false)
                 setData(res.data)
@@ -29,7 +29,7 @@ export const SingleProduct = () => {
     }, [setData, productID])
 
     const getcartdata = useCallback(() => {
-        return axios.get("http://localhost:8500/cart")
+        return axios.get("https://wild-tan-puffer-veil.cyclic.app/cart")
             .then(res => {
                 setCart(res.data)
             })
@@ -55,7 +55,7 @@ const addproduct = () => {
                 setLgalert(false)
             }, 3000)
         } else {
-            fetch("http://localhost:8500/cart/addtocart", {
+            fetch("https://wild-tan-puffer-veil.cyclic.app/cart/addtocart", {
                 method: 'POST',
                 body: JSON.stringify(simple),
                 headers: {
