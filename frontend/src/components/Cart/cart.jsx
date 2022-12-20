@@ -84,7 +84,7 @@ const CartPage = () => {
   },[]);
 // console.log(cartItems)
 const fetchItem=async()=>{
-  const response=await fetch("http://localhost:8500/cart");
+  const response=await fetch("https://wild-tan-puffer-veil.cyclic.app/cart");
   const res=await response.json();
   setCartItems(res);
 }

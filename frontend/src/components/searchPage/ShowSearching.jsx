@@ -17,7 +17,7 @@ const ShowSearching = () => {
 
     // if (val) {
     //   axios
-    //     .get(`http://localhost:8500/products?q=${val}`)
+    //     .get(`https://wild-tan-puffer-veil.cyclic.app/products?q=${val}`)
     //     .then((r) => {
     //     //   console.log(r.data);
     //     })

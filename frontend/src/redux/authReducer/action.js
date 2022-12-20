@@ -39,7 +39,7 @@ export const signupFailure = () => {
 export const loginData = (payload) => (dispatch) => {
   dispatch(loginRequest());
   return axios
-    .post("http://localhost:8500/login", payload)
+    .post("https://wild-tan-puffer-veil.cyclic.app/login", payload)
     .then((res) => {
       return dispatch(loginSuccess(res.data));
     })
@@ -50,7 +50,7 @@ export const loginData = (payload) => (dispatch) => {
 export const signupData = (payload) => (dispatch) => {
   dispatch(signupRequest());
   return axios
-    .post("http://localhost:8500/signup", payload)
+    .post("https://wild-tan-puffer-veil.cyclic.app/signup", payload)
     .then((res) => {
       console.log(res)
       return dispatch(signupSuccess());

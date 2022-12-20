@@ -28,7 +28,7 @@ export const DisplayAP=()=>{
     const location=useLocation()
     
     function get(queryParams){
-        axios.get("http://localhost:8500/products",queryParams)
+        axios.get("https://wild-tan-puffer-veil.cyclic.app/products",queryParams)
             .then((res) => {
                 setLoading(false)
                 setTotalpage(Math.ceil(Number(res.data.datacount)/12))

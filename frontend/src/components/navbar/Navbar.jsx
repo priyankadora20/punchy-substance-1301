@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import styles from "../styles/navbar.module.css";
 import { BsChevronDown, BsCart3 } from "react-icons/bs";
@@ -23,7 +23,6 @@ import {
 } from "@chakra-ui/react";
 import ShowSearching from "../searchPage/ShowSearching";
 import axios from "axios";
-import Particles from "react-tsparticles";
 const Navbar = () => {
   const data = useSelector((store) => store.suggestionReducer.suggestion);
   const isAdmin=useSelector((e)=>e.authreducer.isAdmin)
@@ -35,15 +34,18 @@ const navigate=useNavigate()
       dispatch(getData());
     }
   }, [data.length, dispatch]);
-
+  function xyz(){
+    // console.log("scoll",window.scrollY)
+  }
+const len=useCallback(()=>{
+ return axios.get("https://wild-tan-puffer-veil.cyclic.app/cart").then((r)=>{
+    setCartLen(r.data.length)
+  })
+},[xyz])
   useEffect(()=>{
-    axios.get("http://localhost:8500/cart").then((r)=>{
-      setCartLen(r.data.length)
-    }).catch((e)=>{
-      console.log(e)
-    })
-  },[cartLen])
-  
+  len()
+  },[len])
+  window.addEventListener("scroll",xyz)
   return (
     <> 
       <NavPageWraper>

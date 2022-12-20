@@ -40,7 +40,7 @@ export const adminData = () => (dispatch) => {
   
   dispatch(getRequest());
   return axios
-    .get("http://localhost:8500/backend")
+    .get("https://wild-tan-puffer-veil.cyclic.app/backend")
     .then((res) => {
       console.log(res.data);
       return dispatch(getSuccess(res.data));
@@ -53,7 +53,7 @@ export const adminData = () => (dispatch) => {
 export const addData = (payload) => (dispatch) => {
   dispatch(postRequest());
   return axios
-    .post("http://localhost:8500/backend/addproduct", payload)
+    .post("https://wild-tan-puffer-veil.cyclic.app/backend/addproduct", payload)
     .then((res) => {
       console.log(res);
       return dispatch(postSuccess());

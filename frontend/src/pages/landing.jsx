@@ -58,7 +58,7 @@ export const Landing = () => {
     React.useEffect(() => {
         setLoading(true)
         window.scrollTo(0, 0);
-        axios.get("http://localhost:8500/products")
+        axios.get("https://wild-tan-puffer-veil.cyclic.app/products")
             .then((res) => {
                 setLoading(false)
                 setTopran(res.data)

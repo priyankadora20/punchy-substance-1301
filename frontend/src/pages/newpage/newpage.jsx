@@ -12,7 +12,7 @@ export const Newpage =()=>{
 
 
   React.useEffect(() => {
-    axios.get("http://localhost:8500/backend")
+    axios.get("https://wild-tan-puffer-veil.cyclic.app/backend")
         .then((res) =>setNewproduct(res.data) )
         .catch(err=>console.log(err))
 },[setNewproduct])
