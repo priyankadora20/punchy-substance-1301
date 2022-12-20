@@ -4,7 +4,7 @@
 
 </br>
 
-<H3>Team member :</H3>
+<H2>Team member :</H2>
 
 </br>
 
@@ -14,7 +14,7 @@
 <p>Ashish Chaudhary</p>
 <p>Priyanka Dora</p>
 
-<h3>TECH STACK :</h3>
+<h2>TECH STACK :</h2>
 
 </br>
 
@@ -23,7 +23,7 @@
 
 <p>our website is fully responsive for laptop , tablet , mobile </p>
 
-<H3>Images of website :- </H3>
+<H2>Images of website :- </H2>
 
 </br>
 
