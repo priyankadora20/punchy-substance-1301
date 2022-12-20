@@ -47,7 +47,7 @@
 <p>Backend:</p>
 <p>https://wild-tan-puffer-veil.cyclic.app/</p>
 
-<p>Frontend</p>
+<p>Frontend:</p>
 <p>https://super-belekoy-306029.netlify.app/</p>
 
 
