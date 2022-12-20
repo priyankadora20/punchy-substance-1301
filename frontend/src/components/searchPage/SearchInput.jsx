@@ -3,40 +3,18 @@ import styles from "../styles/navbar.module.css";
 import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
 import { useThrottle } from "use-throttle";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const SearchPage = ({ setQuery, suggestion }) => {
   const [search, setSearch] = useState("");
   const [activeOption, setActiveOption] = useState(0);
-
+const navigate=useNavigate()
   const scrollRef = useRef();
   const handleChange = (e) => {
     setSearch(e.target.value);
-    // axios
-    //   .get(`https://wild-tan-puffer-veil.cyclic.app/products?q=${search}`)
-    //   .then((r) => {
-    //     console.log("from api", r.data);
-    //     setFiltered(r.data);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
+  
   };
 
-  const handleClickSearchWithQ = (e) => {
-    //   if(e){
-    //     if(search===""){
-    //       setFiltered([])
-    //     }
-    //     axios.get(`https://wild-tan-puffer-veil.cyclic.app/products?q=${e}`).then((r)=>{
-    //       console.log("from api",r.data)
-    //       setSuggestion(r.data)
-    //     }).catch((e)=>{
-    //       console.log(e)
-    //     })
-    //   }
-    // setSearch("")
-  };
+ 
   const handleActiveSuggestion = (e) => {
     switch (e.keyCode) {
       // up Arrow
@@ -49,6 +27,7 @@ const SearchPage = ({ setQuery, suggestion }) => {
         }
         setActiveOption((prev) => prev - 1);
         break;
+      // down Arrow
       case 40:
         if (activeOption === suggestion.length) {
           scrollRef.current.scrollTop = 0;
@@ -57,10 +36,6 @@ const SearchPage = ({ setQuery, suggestion }) => {
           scrollRef.current.scrollTop += 30;
         }
         setActiveOption((prev) => prev + 1);
-        break;
-
-      case 13:
-        handleClickSearchWithQ(e.value);
         break;
       default:
         return;
@@ -72,9 +47,7 @@ const SearchPage = ({ setQuery, suggestion }) => {
   useEffect(() => {
     setQuery(throttledText);
   }, [setQuery, throttledText]);
-  // useEffect(() => {
-  //   setQuery(search);
-  // }, [search, setQuery, suggvalue]);
+    
   return (
     <>
       <span onKeyUp={handleActiveSuggestion}>
@@ -85,29 +58,22 @@ const SearchPage = ({ setQuery, suggestion }) => {
           <input type="text" value={search} onChange={handleChange} />
           <span
             className={styles.span}
-            onClick={() => handleClickSearchWithQ(search)}
           >
             <FiSearch />
           </span>
         </div>
-        <SuggestionBox active={activeOption} limit={5} ref={scrollRef}>
+        <SuggestionBox  active={activeOption} limit={5} ref={scrollRef}>
           {suggestion?.map((e, i) => (
             <div
-              
               key={i}
               onMouseOver={() => {
                 setActiveOption(i + 1);
               }}
               onClick={() => {
-                handleClickSearchWithQ(e.brand);
-                console.log("after enter", e.brand);
+                navigate(`/product/${e._id}`)
               }}
             >
-                <Link
-                  to={`/product/${e._id}`}
-                  >
-                {e.brand}
-              </Link>
+              {e.brand}
             </div>
           ))}
         </SuggestionBox>
