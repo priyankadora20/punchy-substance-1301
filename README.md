@@ -20,7 +20,7 @@
 
 <H3>Images of website :- </H3>
 </br>
-
+<img width="932" alt="a" src="https://user-images.githubusercontent.com/105920094/208587878-72052f7e-6eec-47e3-acbe-8e170762b4ef.png">
 
 ![b](https://user-images.githubusercontent.com/105920094/208586761-69de583d-30c0-4b94-a3df-2fb1dc12fcc4.png)
 
@@ -36,4 +36,4 @@
 <h2>Checkoutour website :</h2>
 <p>https://gorgeous-daffodil-6e6d25.netlify.app/</p>
 
-<img width="932" alt="a" src="https://user-images.githubusercontent.com/105920094/208587878-72052f7e-6eec-47e3-acbe-8e170762b4ef.png">
+
