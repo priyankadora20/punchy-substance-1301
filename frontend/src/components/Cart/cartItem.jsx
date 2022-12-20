@@ -20,10 +20,13 @@ const CartItem = (props) => {
 //  console.log("prop",props);
 
  const handleDelete=(id,e)=>{
-   console.log("id",props._id);
+  //  console.log("id",props._id);
     axios.delete(`https://wild-tan-puffer-veil.cyclic.app/cart/deletecart/${id}`)
-    .then((response)=>console.log("Deleted Data",response)).catch((error)=>console.log(error))
-    window.location.reload()
+    .then((response)=>{
+      props.get()
+    console.log("Deleted Data",response)
+ }).catch((error)=>console.log(error))
+    // window.location.reload()
  }
   return (
     <div>

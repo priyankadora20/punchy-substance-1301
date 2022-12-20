@@ -62,7 +62,7 @@ export const Funtionality=()=>{
 
     },[category,setSearchParams,sortby,range])
      return(
-        <Box w='100%' m='auto' p='20px'  bgColor='white'>
+        <Box w='100%' m='auto' p='20px'  bgColor='white' borderRadius='20px'>
             <Box display={{base:"flex",md:"flex",lg:"block"}} gap='2%'>
                 <Box display={{base:"block",md:"block",lg:"flex"}} justifyContent='space-between' alignItems='center' w={{base:"50%",md:"50%",lg:"100%"}} >
                     <Box w={{base:"100%",md:"100%",lg:"8%"}} color='gray'>

@@ -6,6 +6,7 @@ import { Bestseller } from "./bestseller"
 import ClockLoader from "react-spinners/ClockLoader";
 import { useSelector } from "react-redux"
 import {Floatingmenu} from "./floatingmenu"
+import "./styles/productpage.css"
 
 export const SingleProduct = () => {
     const { productID } = useParams()
@@ -135,7 +136,7 @@ return (
                 <Bestseller />
                 <Box>
                     {
-                        showalert && <Box w='30%' position='absolute' top='60' right='0'><Alert status='success'>
+                        showalert && <Box w='30%' className="alerti"><Alert status='success'>
                             <AlertIcon />
                             Product added to cart
                         </Alert></Box>
@@ -143,7 +144,7 @@ return (
                 </Box>
                 <Box>
                     {
-                        lgalert && <Box w='30%' position='absolute' top='60' right='0'>
+                        lgalert && <Box w='30%' className="alerti">
                             <Alert status='error'>
                                 <AlertIcon />
                                 Product already added to cart
@@ -153,7 +154,7 @@ return (
                 </Box>
                 <Box>
                     {
-                        logged && <Box w='30%' position='absolute' top='60' right='0'>
+                        logged && <Box w='30%' className="alerti">
                             <Alert status='error'>
                                 <AlertIcon />
                                 Please Login first
