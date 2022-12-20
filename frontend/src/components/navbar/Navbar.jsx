@@ -43,9 +43,9 @@ const len=useCallback(()=>{
   })
 },[xyz])
   useEffect(()=>{
-  len()
-  },[len])
-  window.addEventListener("scroll",xyz)
+    len()
+  },[cartLen,len])
+  
   return (
     <> 
       <NavPageWraper>
@@ -299,7 +299,7 @@ const len=useCallback(()=>{
               <li>Wearable Devices</li>
             </ul>
           </Link>
-          <Link to={`/product`} className={styles.li}>
+          <Link to={`/newarrival`} className={styles.li}>
             New
           </Link>
           <Link to={"/product"} className={styles.li}>
@@ -315,7 +315,7 @@ const len=useCallback(()=>{
           <Link to={"/product"} className={styles.li}>
             Deals
           </Link>
-          <Link to={"/product"} className={styles.li}>
+          <Link to={"/coupons"} className={styles.li}>
             Coupons
           </Link>
           <Link to={"/addproduct"} className={styles.li}>

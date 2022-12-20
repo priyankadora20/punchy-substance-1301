@@ -11,10 +11,10 @@ const navigate=useNavigate()
   const scrollRef = useRef();
   const handleChange = (e) => {
     setSearch(e.target.value);
- 
+  
   };
 
-  
+ 
   const handleActiveSuggestion = (e) => {
     switch (e.keyCode) {
       // up Arrow
