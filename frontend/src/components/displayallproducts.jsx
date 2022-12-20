@@ -1,13 +1,15 @@
-import { Box, Heading, Image, Text } from "@chakra-ui/react"
+import { Alert, AlertIcon, Box, Button, Heading, Image, Text } from "@chakra-ui/react"
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import {Floatingmenu} from "./floatingmenu"
 import { useLocation, useSearchParams } from "react-router-dom"
 import { ProductPagination } from "./productpagination"
 import { Link } from "react-router-dom"
 import ClockLoader from "react-spinners/ClockLoader";
 import "./styles/productpage.css"
-// import {FaHome,FaArrowUp,FaCartArrowDown,FaEye} from "react-icons/fa"
+import { FaEye , FaCartArrowDown } from "react-icons/fa"
+import { useSelector } from "react-redux"
+
 
 const validpage=(val)=>{
     val=Number(val);
@@ -26,6 +28,11 @@ export const DisplayAP=()=>{
     const [totalpage,setTotalpage]=useState(0)
     const [loading,setLoading]=useState(false)
     const location=useLocation()
+    const [cart, setCart] = useState([])
+    const [showalert, setShowalert] = useState(false)
+    const [lgalert, setLgalert] = useState(false)
+    const [logged, setLogged] = useState(false)
+    const { isAuth } = useSelector(e => e.authreducer)
     
     function get(queryParams){
         axios.get("https://wild-tan-puffer-veil.cyclic.app/products",queryParams)
@@ -39,6 +46,13 @@ export const DisplayAP=()=>{
                 console.log(err)
             })
     }
+
+    const getcartdata = useCallback(() => {
+        return axios.get("https://wild-tan-puffer-veil.cyclic.app/cart")
+            .then(res => {
+                setCart(res.data)
+            })
+    }, [setCart])
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -59,11 +73,47 @@ export const DisplayAP=()=>{
                 }
             }
             setLoading(true)
+            getcartdata()
             get(queryParams)
         }
         
-        
-    }, [location,searchParams,page])
+    }, [location,searchParams,page,getcartdata])
+    
+
+    const addproduct = (item) => {
+        if (isAuth) {
+            const match = cart.filter((el) => el._id == item._id)
+            if (match.length > 0) {
+                setLgalert(true)
+                setTimeout(() => {
+                    setLgalert(false)
+                }, 3000)
+            } else {
+                fetch("https://wild-tan-puffer-veil.cyclic.app/cart/addtocart", {
+                    method: 'POST',
+                    body: JSON.stringify(item),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(res => res.json())
+                    .then(res => {
+                        console.log(res)
+                        getcartdata()
+                        setShowalert(true)
+                        setTimeout(() => {
+                            setShowalert(false)
+                        }, 3000)
+                    })
+                    .catch(err => console.log(err))
+            }
+        } else {
+            setLogged(true)
+            setTimeout(() => {
+                setLogged(false)
+            }, 3000)
+        }
+    }
     return(
        <>
        {
@@ -76,23 +126,23 @@ export const DisplayAP=()=>{
        /></Box>
        }
        {
-        !loading&& <Box >
-        <Box w='100%' m='auto' display='grid' gridTemplateColumns='repeat(auto-fit,minmax(250px,1fr))'  gridTemplateRows='auto'  gap='20px' mt='20px'>
+        !loading&& <Box w='100%'>
+        <Box w='100%' m='auto' display='grid'  gridTemplateColumns='repeat(auto-fit,minmax(250px,1fr))'  gridTemplateRows='auto'  gap='20px' mt='20px' p='20px'>
         {
             topran.length>0&&topran.map((el,ind)=>{
                 return(
-                    <Link to={`/product/${el._id}`} key={ind}><Box className="hisingle" textAlign='center' h='300px' bgColor='white' display='flex' flexDirection='column' gap='2%' p='20px' >
-                        <Image src={el.image} w='100%' h='70%' />
+                    <Box key={ind} className="hisingle" textAlign='center'  h='300px' color='white' border='1px solid #7DA2A9' borderBottom='none' borderTop='none' display='flex' flexDirection='column' gap='2%' p='20px' >
+                        <Image src={el.image} w='100%' h='70%' borderRadius='20px'/>
                         <Heading fontSize='20px' >{el.category}</Heading>
                         <Text >₹ {el.price}</Text>
                         <Text >{el.brand}</Text>
-                        {/* <Box className="overlay" >
+                        <Box className="overlay" >
                             <Box className="cont" display='flex' gap='30%'>
-                                <a href={el.app} target="_blank"><FaEye className="prbt"  color='#7DA2A9' fontSize={50}/></a>
-                                <a href={el.git} target="_blank"><FaEye className="prbt"  color='#7DA2A9' fontSize={50}/></a>
+                            <p onClick={()=>addproduct(el)}><FaCartArrowDown className="prbt"   fontSize={50}/></p>
+                            <Link to={`/product/${el._id}`} key={ind}><FaEye className="prbt"   fontSize={50}/></Link>
                             </Box>
-                        </Box> */}
-                    </Box></Link>
+                        </Box>
+                    </Box>
                 )
             })
         }
@@ -101,6 +151,34 @@ export const DisplayAP=()=>{
         <Box >
             <ProductPagination totalpages={totalpage} currpage={page} handlepage={page=>setPage(page)}/>
         </Box>
+        <Box>
+                    {
+                        showalert && <Box w='30%' className="alerti"><Alert status='success'>
+                            <AlertIcon />
+                            Product added to cart
+                        </Alert></Box>
+                    }
+                </Box>
+                <Box>
+                    {
+                        lgalert && <Box w='30%' className="alerti">
+                            <Alert status='error'>
+                                <AlertIcon />
+                                Product already added to cart
+                            </Alert>
+                        </Box>
+                    }
+                </Box>
+                <Box>
+                    {
+                        logged && <Box w='30%' className="alerti">
+                            <Alert status='error'>
+                                <AlertIcon />
+                                Please Login first
+                            </Alert>
+                        </Box>
+                    }
+                </Box>
     </Box>
        }
        </>

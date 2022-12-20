@@ -1,4 +1,4 @@
-import { Box, Text, Button, color } from "@chakra-ui/react";
+import { Box, Text, Button, color, Image, Heading, Divider } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import "../styles/Cart.css";
 import Carousel from "react-elastic-carousel";
@@ -6,6 +6,7 @@ import CarouselItem from "./carousalItem.jsx";
 import CartItem from "./cartItem";
 import { Link } from "react-router-dom";
 import CommonHeader from "../Cart/CommonHeader";
+import {FaHome,FaShoppingBag} from "react-icons/fa"
 
 const CarouselData=
 [
@@ -64,6 +65,7 @@ const CartPage = () => {
   
   const [cartItems, setCartItems] = useState([]);
   const [sum, setSum] = useState(0)
+  const [flag,setFlag]=useState(false)
   let grandTotal= 0;
   let count=cartItems.length;
   
@@ -90,14 +92,21 @@ const fetchItem=async()=>{
 }
 // callback func
 
+useEffect(()=>{
+  cartItems.length?setFlag(false):setFlag(true)
+},[cartItems])
+
 const getmrp= (data)=>{
   grandTotal += data
   // console.log(data,"data");
  setSum(grandTotal)
+ 
 
 }
   return (
-    <div>
+    <>
+    {
+      !flag&&<div>
       {/* Blue banner top */}
       <CommonHeader />
       {/* Product Name & Detail */}
@@ -118,7 +127,7 @@ const getmrp= (data)=>{
           
            return(
               <Box key={item._id}>
-                  <CartItem getmrp= {getmrp} sum= {sum} setSum={setSum} _id={item._id} name= {item.title} image= {item.image} price= {item.price}/>
+                  <CartItem getmrp= {getmrp} sum= {sum} setSum={setSum} _id={item._id} name= {item.title} image= {item.image} price= {item.price} get={fetchItem}/>
               </Box>
            )
          })}        
@@ -253,6 +262,22 @@ const getmrp= (data)=>{
         <br />
       </Box>
     </div>
+    }
+    {
+      flag&&<Box  width='70%' m="auto" mt="100px">
+      <Box mt='150px' display={{base:'block',md:'block',lg:'flex'}} justifyContent='space-around' >
+         <Box w={{base:'100%',md:'90%',lg:'50%'}} m='auto'>
+            <Image src="https://cdn.dribbble.com/users/887568/screenshots/3172047/ufo.gif" h="100%" w='100%'/>
+         </Box>
+         <Box w={{base:'100%',md:'90%',lg:'48%'}} textAlign='center' pt='15%' m='auto'>
+             <Heading>Cart is Empty !</Heading>
+             <Divider orientation='horizontal' margin='auto' mt="20px" />
+             <Link to='/'><Button w={{base:'100%',md:'90%',lg:'80%'}} p='30px' fontSize='22px' className="btnhv" colorScheme='teal' mt='50px'><FaShoppingBag color='white' fontSize={25}/> Continue Shopping</Button></Link>
+         </Box>
+      </Box>
+ </Box>
+    }
+    </>
   );
 };
 
