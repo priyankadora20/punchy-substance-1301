@@ -1,25 +1,26 @@
-<h1>GEEKBUYING CLONE APP</h1>
+<h1>GEEKBUYING CLONE APP as GadgetStop</h1>
 </br>
 <p>GeekBuying is one of the leading E-commerce websites delivering a wide range of consumer technology across the globe. We are the one stop shop for many leading brands. At GeekBuying.com we strive to achieve the highest level of customer satisfaction possible.</p>
 
 </br>
 
-<H2>Team member :</H2>
-
+<H2>Team GADGETSTOP:</H2>
 </br>
+<p>Kartik Kunwar    -https://github.com/kartikkunwar </p>
+<p>Dhanraj Jagtap   -https://github.com/Dhanraj4198</p>
+<p>Supriyo Samanta  -https://github.com/supriyosamanta1997</p>
+<p>Ashish Chaudhary -https://github.com/AshishChaudhary3639</p>
+<p>Priyanka Dora    -https://github.com/priyankadora20</p>
 
-<p>Kartik Kunwar</p>
-<p>Dhanraj Jagtap</p>
-<p>Supriyo Samanta</p>
-<p>Ashish Chaudhary</p>
-<p>Priyanka Dora</p>
+<H2>Project Manager :</H2>
+</br>
+<p>Indar Pal - https://github.com/Inder-Pal-github</p>
 
 <h2>TECH STACK :</h2>
-
 </br>
 
 <p>FRONTEND -> react, redux, chakra ui, react-dom </p>
-<p>BACKEND -> MongoDB, mongoose, api</p>
+<p>BACKEND -> MongoDB, mongoose, nodejs</p>
 
 <p>our website is fully responsive for laptop , tablet , mobile </p>
 
